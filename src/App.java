@@ -1,5 +1,5 @@
 /**
- * 计算两个整数之和
+ * Count the numbers;
  */
 public class App {
     /**
@@ -11,6 +11,6 @@ public class App {
         System.out.println(1 + 2);
         int num = 1;
         System.out.println(num);
-        System.out.println("../bin/App.class");
+        System.out.println();
     }
 }
