@@ -1,3 +1,5 @@
+package Preview;
+
 import java.util.Scanner;
 
 /**
