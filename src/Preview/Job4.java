@@ -22,9 +22,9 @@ public class Job4 {
          * Math.abs() 就是三元运算
          */
         int diff = numOfOdd - numOfEven;
-        int num = diff < 0 ? -diff : diff;
+        diff = diff < 0 ? -diff : diff;
 
-        System.out.println("奇数与偶数数目之差为：" + num);
+        System.out.println("奇数与偶数数目之差为：" + diff);
 
         // 最大值
         int max = Integer.MIN_VALUE;
@@ -38,6 +38,22 @@ public class Job4 {
                 min = number;
             }
         }
-        System.out.println("最大值是：" + max + "\n最小值是：" + min);
+        System.out.println("最大值是:" + max + "\n最小值是:" + min);
+
+        int num = 8;
+        boolean exist = false;
+
+        for (int number : numbers) {
+            if (num == number) {
+                exist = true;
+                break;
+            }
+        }
+
+        if (exist) {
+            System.out.println(num + "存在于数组中");
+        } else {
+            System.out.println(num + "不存在与数组中");
+        }
     }
 }
