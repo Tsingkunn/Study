@@ -1,5 +1,8 @@
 package Preview;
 
+/**
+ * Auto plus.
+ */
 public class Job2 {
     public static void main(String[] args) {
         int i = 0, j = 0;

@@ -24,18 +24,12 @@ public class Job1 {
         }
         if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) {
             if (month == 2) {
-                System.out.println(year + "年" + month + "月有" + (days[month - 1] + 1) + "天");
+                System.out.println(year + "年是闰年，" + month + "月有" + (days[month - 1] + 1) + "天");
             } else {
-                System.out.println(year + "年" + month + "月有" + days[month - 1] + "天");
+                System.out.println(year + "年是闰年，" + month + "月有" + days[month - 1] + "天");
             }
         } else {
-            System.out.println(year + "年" + month + "月有" + days[month - 1] + "天");
-        }
-        int numbers[] = new int[3];
-        for (int i = 0; i < numbers.length; ++i) {
-            System.out.println(i);
-            numbers[i] = i;
-            System.out.println(i);
+            System.out.println(year + "年是平年，" + month + "月有" + days[month - 1] + "天");
         }
         scanner.close();
     }
