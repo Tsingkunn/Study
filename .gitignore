@@ -34,3 +34,7 @@ build/
 .history/
 bin/
 lib/
+
+### res ###
+*.jpg
+*.md
