@@ -36,5 +36,5 @@ bin/
 lib/
 
 ### res ###
-*.jpg
-*.md
+img.jpg
+study.md

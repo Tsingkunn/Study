@@ -20,6 +20,8 @@ public class Job4 {
          * 三元运算：：变量 = 条件？成立：不成立
          * r = r<0?-r:r
          * Math.abs() 就是三元运算
+         * 运算符参与运算，运算结果取决于范围大的类型
+         * System.out.println(2 > 1 ? 1 : 9.9); ==> 1.0
          */
         int diff = numOfOdd - numOfEven;
         diff = diff < 0 ? -diff : diff;
