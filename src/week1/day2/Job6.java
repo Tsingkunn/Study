@@ -26,11 +26,8 @@ public class Job6 {
     public static int[] questionTwo() {
         int nums[] = new int[100];
 
-        int i = 0;
-
-        for (int n : nums) {
-            nums[i] = i + 1;
-            i++;
+        for (int j = 0; j < nums.length; j++) {
+            nums[j] = j + 1;
         }
 
         for (int num : nums) {
@@ -57,11 +54,10 @@ public class Job6 {
     public static void questionFour() {
         Scanner scan = new Scanner(System.in);
         String[] names = new String[5];
-        int i = 0;
-        for (String name : names) {
+
+        for (int j = 0; j < names.length; j++) {
             System.out.println("请输入学生姓名：");
-            names[i] = scan.nextLine();
-            i++;
+            names[j] = scan.nextLine();
         }
 
         for (String name : names) {
