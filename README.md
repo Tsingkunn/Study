@@ -25,7 +25,8 @@
     flowerName[flowerName.length - 1] = name; // 添加数据
 ```
 
-- 对于字符串的操作:
-  1. string.startsWith(String str) 以什么字符开始
-  2. string.endWith(String str) 以什么字符结束
-  3. string.contains(String str) 包含什么字符
+3. 字符串的四个方法:
+   - string.startsWith(String str) 以字符串 str 符开始,返回布尔值
+   - string.endWith(String str) 以字符串 str 结束,返回布尔值
+   - string.contains(String str) 包含字符串 str,返回布尔值
+   - string.split() 分割字符,返回一个字符数组
