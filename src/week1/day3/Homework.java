@@ -33,6 +33,11 @@ public class Homework {
         do {
             no = scan.nextInt(); // 每次进入循环都让用户进行输入
             exist = false; // 每次重新输入前重置一次exist为false
+            if (no <= 0) {
+                exist = true;// 如果学号存在,将exit置换为true
+                System.out.println("学号信息输入有误,请重新输入:");
+                continue;
+            }
             for (String stu : stuArr) {
                 if (stu.split("-")[0].equals(no + "")) {
                     exist = true;// 如果学号存在,将exit置换为true
