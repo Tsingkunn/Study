@@ -22,11 +22,13 @@ public class Job4 {
             max = num > max ? num : max;
         }
 
+        System.out.println("The max number is " + max);
+
         // for (int i = 0; i < nums.length - 1; i++) {
         // nums[0] = nums[i] > nums[i + 1] ? nums[i] : nums[i + 1];
         // }
 
-        System.out.println("The max number is " + nums[0]);
+        // System.out.println("The max number is " + nums[0]);
 
         scan.close();
     }

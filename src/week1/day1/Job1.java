@@ -1,3 +1,5 @@
+package week1.day001;
+
 public class Job1 {
 
     /**

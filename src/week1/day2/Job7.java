@@ -6,7 +6,7 @@ import java.util.Scanner;
  * 1.判断年龄是否合法
  * 2.判断一个数是否是3和五的公倍数
  */
-public class Homework1 {
+public class Job7 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
