@@ -46,7 +46,6 @@ public class Job6 {
         }
 
         for (String pro : arr) {
-            pro.startsWith(pro, index)
             if (pro.contains("山")) {
                 System.out.println(pro);
             }
