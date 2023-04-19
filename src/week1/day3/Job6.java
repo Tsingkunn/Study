@@ -3,7 +3,7 @@ package week1.day3;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Job06 {
+public class Job6 {
     public static void main(String[] args) {
         String[] arr = { "电水壶", "百岁山", "电视机", "恒大冰泉", "电饭煲", "农夫山泉", "电动牙刷", "电火锅" };
 
