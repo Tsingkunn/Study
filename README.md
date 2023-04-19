@@ -24,3 +24,8 @@
     flowerName = Arrays.copyOf(flowerName, flowerName  length + 1); // 数组扩容
     flowerName[flowerName.length - 1] = name; // 添加数据
 ```
+
+- 对于字符串的操作:
+  1. string.startsWith(String str) 以什么字符开始
+  2. string.endWith(String str) 以什么字符结束
+  3. string.contains(String str) 包含什么字符

@@ -22,34 +22,35 @@ public class Job6 {
         for (String string : arr) {
             System.out.println(string);
         }
-        // System.out.println("请输入产品名称:");
-        // String prod = scan.next();
-        // String[] arr2 = new String[arr.length + 1];
-        // for (int i = 0; i < arr.length; i++) {
-        // arr2[i] = arr[i];
-        // }
-        // arr2[arr2.length - 1] = prod;
-        // arr = arr2;
-        // for (String string : arr) {
-        // System.out.println(string);
-        // }
+        System.out.println("请输入产品名称:");
+        String prod = scan.next();
+        String[] arr2 = new String[arr.length + 1];
+        for (int i = 0; i < arr.length; i++) {
+            arr2[i] = arr[i];
+        }
+        arr2[arr2.length - 1] = prod;
+        arr = arr2;
+        for (String string : arr) {
+            System.out.println(string);
+        }
 
-        // for (String pro : arr) {
-        // if (pro.endsWith("泉")) {
-        // System.out.println(pro);
-        // }
-        // }
-        // for (String pro : arr) {
-        // if (pro.length() == 3) {
-        // System.out.println(pro);
-        // }
-        // }
+        for (String pro : arr) {
+            if (pro.endsWith("泉")) {
+                System.out.println(pro);
+            }
+        }
+        for (String pro : arr) {
+            if (pro.length() == 3) {
+                System.out.println(pro);
+            }
+        }
 
-        // for (String pro : arr) {
-        // if (pro.contains("山")) {
-        // System.out.println(pro);
-        // }
-        // }
+        for (String pro : arr) {
+            pro.startsWith(pro, index)
+            if (pro.contains("山")) {
+                System.out.println(pro);
+            }
+        }
 
         scan.close();
     }
