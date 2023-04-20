@@ -30,3 +30,8 @@
    - string.endWith(String str) 以字符串 str 结束,返回布尔值
    - string.contains(String str) 包含字符串 str,返回布尔值
    - string.split() 分割字符,返回一个字符数组
+
+#### 4.20
+
+今日去找了一下如何补全字符串长度:
+String.format("%1$-8s", str)
