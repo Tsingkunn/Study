@@ -49,7 +49,7 @@ public class Job1 {
 	}
 
 	static boolean isNameValid(String name) {
-		if (name.equals("") || name == null) {
+		if (name.equals("")) {
 			return false;
 		} else {
 			return true;
@@ -57,35 +57,27 @@ public class Job1 {
 	}
 
 	static boolean isGenderValid(String gender) {
-		if (gender.equals("男") || gender.equals("女")) {
-			return true;
-		} else {
-			return false;
-		}
+		return gender.equals("男") || gender.equals("女");
 	}
 
 	static boolean isIncomeValid(int income) {
-		if (income > 0) {
-			return true;
-		} else {
-			return false;
-		}
+		return income > 0;
 	}
 
 	static void showMainPage() {
-		System.out.println(""
-				+ "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n"
-				+ "┃\t主菜单\t\t\t┃\n"
-				+ "┃1. 查询完整名单\t\t┃\n"
-				+ "┃2. 新增员工信息\t\t┃\n"
-				+ "┃3. 更改员工信息\t\t┃\n"
-				+ "┃4. 删除员工信息\t\t┃\n"
-				+ "┃5. 模糊查找员工信息\t\t┃\n"
-				+ "┃6. 找出工资在15k-20k之间的员工\t┃\n"
-				+ "┃7. 查询工资最高/最低的员工\t┃\n"
-				+ "┃8. 查询女员工信息\t\t┃\n"
-				+ "┃...请选择对应操作...\t\t┃\n"
-				+ "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+		System.out.println("""
+				┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+				┃\t主菜单\t\t\t┃
+				┃1. 查询完整名单\t\t┃
+				┃2. 新增员工信息\t\t┃
+				┃3. 更改员工信息\t\t┃
+				┃4. 删除员工信息\t\t┃
+				┃5. 模糊查找员工信息\t\t┃
+				┃6. 找出工资在15k-20k之间的员工\t┃
+				┃7. 查询工资最高/最低的员工\t┃
+				┃8. 查询女员工信息\t\t┃
+				┃...请选择对应操作...\t\t┃
+				┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛""");
 
 	}
 

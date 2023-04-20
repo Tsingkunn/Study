@@ -7,22 +7,22 @@ import java.util.Scanner;
  * 1.获取所有的"海鲜"商品,并输出.
  * 2.请问"水果"类型有几个?
  * 3.查询金额大于200的商品有哪些？
- * 4.输出100-1000区间的商品有哪些?
+ * 4.输出(100,1000)区间的商品有哪些?
  * 5.添加一条商品信息？
  * 6.根据下标删除一条商品信息？
- * 
  */
 public class Homework {
-    static String[] foods = { "猫山榴莲-水果-2000", "波士顿龙虾-海鲜-600", "梭子蟹-海鲜-80", "人参果-水果-30", "大黄鱼-海产-3000" };
+    static String[] foods = {"猫山榴莲-水果-2000", "波士顿龙虾-海鲜-600", "梭子蟹-海鲜-80", "人参果-水果-30", "大黄鱼-海产-3000"};
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
 
+
         // 循环控制
-        boolean isLoop = true;
+//        boolean isLoop = true;
 
         // 利用死循环保持程序一直在运行,
-        while (isLoop) {
+        while (true) {
             // 每次循环开始都展示首页
             showMainPage();
             // 键入选项
@@ -38,7 +38,6 @@ public class Homework {
                 case 6 -> addFood();
                 case 7 -> deleteFood();
                 default -> System.out.println("暂无此功能");
-
             }
         }
 
@@ -46,21 +45,21 @@ public class Homework {
 
     /**
      * 展示首页操作引导界面
-     * 
      */
     static void showMainPage() {
-        System.out.println("\n"
-                + "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n"
-                + "┃\t主菜单\t\t\t┃\n"
-                + "┃1. 查询所有商品\t\t┃\n"
-                + "┃2. 查询海鲜类产品并打印\t┃\n"
-                + "┃3. 查询水果品类\t\t┃\n"
-                + "┃4. 查询金额200以上的商品\t┃\n"
-                + "┃5. 查询金额100-1000之间的商品\t┃\n"
-                + "┃6. 添加商品信息\t\t┃\n"
-                + "┃7. 根据下标删除商品\t\t┃\n"
-                + "┃...请选择对应操作...\t\t┃\n"
-                + "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
+        System.out.println("""
+                ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+                ┃\t主菜单\t\t\t┃
+                ┃1. 查询所有商品\t\t┃
+                ┃2. 查询海鲜类产品并打印\t┃
+                ┃3. 查询水果品类\t\t┃
+                ┃4. 查询金额200以上的商品\t┃
+                ┃5. 查询金额100-1000之间的商品\t┃
+                ┃6. 添加商品信息\t\t┃
+                ┃7. 根据下标删除商品\t\t┃
+                ┃...请选择对应操作...\t\t┃
+                ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+                """);
 
     }
 
@@ -191,23 +190,20 @@ public class Homework {
 
     /**
      * 判断数组下标有无越界
-     * 
+     *
      * @param index 数组下标
-     * @return 如果下标范围合理,返回true;否则,返回false
+     * @return 如果下标范围合理, 返回true;否则,返回false
      */
     private static boolean isIndexValid(int index) {
         // 判断下标是否越界,下标长度在0~length-1之间,则是有效下标,返回true;否则返回false
-        if (index >= 0 && index < foods.length) {
-            return true;
-        }
-        return false;
+        return index >= 0 && index < foods.length;
     }
 
     /**
      * 查询商品数组中是否存在该商品
-     * 
+     *
      * @param food 要查询的商品名称
-     * @return 如果商品存在,返回true,如果不存在,返回false
+     * @return 如果商品存在, 返回true, 如果不存在, 返回false
      */
     private static boolean isFoodExist(String food) {
         // 遍历数组
@@ -222,7 +218,7 @@ public class Homework {
 
     /**
      * 在末尾追加数组元素
-     * 
+     *
      * @param arr     需要扩容的数组
      * @param element 需要添加的元素
      * @return 数组
@@ -237,7 +233,7 @@ public class Homework {
 
     /**
      * 删除数组最后一个元素
-     * 
+     *
      * @param arr   需要删除元素的数组
      * @param index 需要删除元素的下标
      * @return 返回删除元素之后的数组
@@ -252,7 +248,7 @@ public class Homework {
 
     /**
      * 格式化输出字符串信息
-     * 
+     *
      * @param food 单个的foods数组中的字符串,如"泥鳅-水产-155"
      */
     private static void formatPrint(String food) {

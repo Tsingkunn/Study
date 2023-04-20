@@ -18,14 +18,14 @@
     flowerName = Arrays.copyOf(flowerName, flowerName.length - 1); // 数组缩容
 ```
 
-2. Arrays.copyOf() 方法需要传入一个数组,重要的是可以自动缩容与扩容并且返回这个缩容或者扩容之后的数组.
+1. Arrays.copyOf() 方法需要传入一个数组,重要的是可以自动缩容与扩容并且返回这个缩容或者扩容之后的数组.
 
 ```Java
     flowerName = Arrays.copyOf(flowerName, flowerName  length + 1); // 数组扩容
     flowerName[flowerName.length - 1] = name; // 添加数据
 ```
 
-3. 字符串的四个方法:
+1. 字符串的四个方法:
    - string.startsWith(String str) 以字符串 str 符开始,返回布尔值
    - string.endWith(String str) 以字符串 str 结束,返回布尔值
    - string.contains(String str) 包含字符串 str,返回布尔值
@@ -33,5 +33,4 @@
 
 #### 4.20
 
-今日去找了一下如何补全字符串长度:
-String.format("%1$-8s", str)
+今日去找了一下如何补全字符串长度: String.format("%1$-8s", str)
