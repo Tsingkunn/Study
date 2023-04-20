@@ -260,6 +260,10 @@ public class Homework {
         String[] info = food.split("-");
         // 将字符遍历输出
         for (String str : info) {
+            // String.format("%1$-8s", str) 是字符串字符串格式化输出.
+            // [%1$-8s]表示的是如果字符串str不满足8个长度,则再后面补全空格.
+            // 如:"大黄鱼"只有三个字符,格式化后,"大黄鱼 ",为八个字符.
+            // 主要功能就是美化输出.没有其他任何意义
             System.out.print(String.format("%1$-8s", str) + "\t");
         }
         System.out.println();
