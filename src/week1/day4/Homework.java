@@ -19,10 +19,10 @@ public class Homework {
 
 
         // 循环控制
-//        boolean isLoop = true;
+        boolean isLoop = true;
 
         // 利用死循环保持程序一直在运行,
-        while (true) {
+        while (isLoop) {
             // 每次循环开始都展示首页
             showMainPage();
             // 键入选项
@@ -37,8 +37,10 @@ public class Homework {
                 case 5 -> queryByCost();
                 case 6 -> addFood();
                 case 7 -> deleteFood();
+                case 8 -> isLoop = false;
                 default -> System.out.println("暂无此功能");
             }
+
         }
 
     }
@@ -48,19 +50,17 @@ public class Homework {
      */
     static void showMainPage() {
         System.out.println("""
-                ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-                ┃\t主菜单\t\t\t┃
-                ┃1. 查询所有商品\t\t┃
-                ┃2. 查询海鲜类产品并打印\t┃
-                ┃3. 查询水果品类\t\t┃
-                ┃4. 查询金额200以上的商品\t┃
-                ┃5. 查询金额100-1000之间的商品\t┃
-                ┃6. 添加商品信息\t\t┃
-                ┃7. 根据下标删除商品\t\t┃
-                ┃...请选择对应操作...\t\t┃
-                ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-                """);
-
+            \t主菜单
+            1. 查询所有商品
+            2. 查询海鲜类产品并打印
+            3. 查询水果品类
+            4. 查询金额200以上的商品
+            5. 查询金额100-1000之间的商品
+            6. 添加商品信息
+            7. 根据下标删除商品
+            8. 退出系统
+            ...请选择对应操作...
+            """);
     }
 
     /**
