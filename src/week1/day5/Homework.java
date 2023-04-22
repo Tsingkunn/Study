@@ -562,7 +562,7 @@ public class Homework {
      * @param vStructure 车辆结构
      * @return 标准车辆信息字符串
      */
-    private static String integratedInfo(int vId, String vBrand, String vType, double vCost, String vSize, String vStructure) {
+    private static String integratedInfo(int vId, String vBrand, String vType, int vCost, String vSize, String vStructure) {
         return vId + "-" + vBrand + "-" + vType + "-" + vCost + "-" + vSize + "-" + vStructure;
     }
 
