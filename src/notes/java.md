@@ -4,49 +4,113 @@
 
 #### 4.19:
 
-今日了解到了两个重要的方法:
+在数组中关于***System.arraycopy()*** 和 ***Arrays.copyOf()*** 的应用
 
-- 重点在于 System.arraycopy() 和 Arrays.copyOf()的应用
+1. 删除数组中的一个元素
+    ```java
+    /**
+    * 删除数组元素
+    *
+    * @param arr   需要删除元素的数组
+    * @param index 需要删除元素的下标
+    * @return 返回删除元素之后的数组
+    */
+    private static String[] delElement(String[] arr, int index) {
+        // 剪切
+        System.arraycopy(arr, index + 1, arr, index, arr.length - 1 - index);
+        // 缩容
+        arr = Arrays.copyOf(arr, arr.length - 1);
+        return arr;
+    }
+    ```
 
-1. System.arraycopy() 方法需要传入两个数组,没有返回值.
+2. 添加一个元素到数组中
+    ```Java
+    private static String[] addElement(String[] arr, String element) {
+        // 扩容
+        arr = Arrays.copyOf(arr, arr.length + 1);
+        // 末位追加数据
+        arr[arr.length - 1] = element;
+        return arr;
+     }
+    ```
 
-```java
-    delFlower = flowerName[index]; //记录被删除的信息
-    System.arraycopy(flowerName, index + 1, flowerName, index, flowerName.length- 1 - index); // 数组之间的切片复制
-    flowerName = Arrays.copyOf(flowerName, flowerName.length - 1); // 数组缩容
-```
-
-1. Arrays.copyOf() 方法需要传入一个数组,重要的是可以自动缩容与扩容并且返回这个缩容或者扩容之后的数组.
-
-```Java
-    flowerName = Arrays.copyOf(flowerName, flowerName  length + 1); // 数组扩容
-    flowerName[flowerName.length - 1] = name; // 添加数据
-```
-
-1. 字符串的四个方法:
-    - string.startsWith(String str) 以字符串 str 符开始,返回布尔值
-    - string.endWith(String str) 以字符串 str 结束,返回布尔值
-    - string.contains(String str) 包含字符串 str,返回布尔值
-    - string.split() 分割字符,返回一个字符数组
+3. 关于字符串的方法:
+    ```java
+    // 以字符串 str 符开始,返回布尔值
+    string.startsWith(String str); 
+    // 以字符串 str 结束,返回布尔值
+    string.endWith(String str) 
+    // 包含字符串 str,返回布尔值
+    string.contains(String str) 
+    // 分割字符,返回一个字符数组
+    string.split()
+    ```
 
 #### 4.20
 
 1. 补全字符串长度:
->String.format("%-数字s",str)
+    ```java
+    // 表示左对齐 并设定了字符串最少占据的字节长度 
+    // 当str不足指定数字的字节长度时用空格补足
+    String.format("%-数字s",str)
+    ```
 
-表示左对齐 并设定了字符串最少占据的字节长度 当str不足指定数字的字节长度时用空格补足
-1. 将数组以["数据1","数据2","数据3"]的格式输出
-
-```java
-        int[] numbers = {1, 2, 3, 4};
-        Arrays.toString(numbers);
-        >> [1,2,3,4]
-```
+2. 将数组以["数据1","数据2","数据3"]的格式输出
+    ```java
+    int[]numbers={1,2,3,4};
+    Arrays.toString(numbers);
+    >>[1,2,3,4]
+    ```
 
 #### 4.21
-问题:git上已经上传的的文件夹,再在.gitignore中添加该文件夹,结果不生效的问题:
 
-1. 原理解释:.gitignore 中只能添加之前没有被track(add)过的文件,如果文件已经进入了版本管理,那么在.gitignore中添加是无效的.
-2. 解决方案:先把本地缓存删除掉(改成未track状态),然后再提交.
-    >git rm -r --cached /out
-    
+1. 拼接字符串:
+    ```java
+    "abc".contact("def");
+    >>"abcdef"
+    // "+" 的链接操作会不断调用new StringBuilder. 
+    // new StringBuilder()--> append() --> toString --> ... -->
+    // --> new StringBuilder() --> append() --> toString()
+    // 会浪费大量内存空间
+    "abc"+"def";
+    >>"abcdef"
+    ```
+
+2. Stream 流遍历数组:
+    - 打印:
+    ```java
+    Stream.of(数组).foreach(System.out::println);
+    Arrays.stream(数组).foreach(System.out::println)
+    ```
+    - 获取数值:
+    ```java
+    String.of(数组).foreach( e -> System.out.println("元素" + e);
+    ```
+
+3. compareTo() 与 equals() 与 ==
+
+    ```java
+    String str1 = "123";
+    String str2 = new String("123");
+    String str3 = "1234";
+    String str4 = "123";
+   
+    System.out.println(str1.compareTo(str2));
+    >>0
+    System.out.println(str1.compareTo(str3));
+    >>-1
+    System.out.println(str1.equals(str2));
+    >>true
+    System.out.println(str1 == str2);
+    >>false
+    System.out.println(str1 == str4);
+    >>true
+    ```
+4. 获取子字符串
+    ```java
+    // 获取子字符串,从benginIndex(包括)到endIndex(不包括)结束
+    // string.subString(benginIndex, endIndex)
+    "123456".subString(1,3); 
+    >>"23"
+   ```

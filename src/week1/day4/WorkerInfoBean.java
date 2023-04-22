@@ -40,6 +40,11 @@ public class WorkerInfoBean {
 
     @Override
     public String toString() {
-        return "id:" + id + ",姓名:" + name + ",性别:" + gender + ",工资:" + salary;
+        return "WorkerInfoBean{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", salary=" + salary +
+                '}';
     }
 }
