@@ -26,6 +26,7 @@ public class Homework {
     static String[] vehicles = {
             "20231122-奔驰-GLC-400000-中型-SUV",
             "20231123-比亚迪-护卫舰07-202800-中型-SUV",
+            "20231123-比亚迪-护卫舰06-202800-中型-SUV",
             "20231124-比亚迪-汉-197800-中型-轿车",
             "20231125-特斯拉-Model Y-261900-中型-SUV",
             "20231126-比亚迪-海豚-116800-小型-轿车"};
@@ -128,15 +129,14 @@ public class Homework {
                 // 找出"比亚迪"品牌中价格最高的车辆信息.
                 case 6 -> {
                     // 找出最贵的比亚迪汽车
-                    String vehicle = findMaxCostFromBYD();
+                    String[] vehicle = findMaxCostFromBYD();
                     // 将该信息转换成只有一个元素的数组,便于格式化输出
-                    String[] info = {vehicle};
                     // 判断数组中是否有比亚迪汽车
-                    if (vehicle.length() != 0) {
+                    if (vehicle.length != 0) {
                         // 如果有比亚迪汽车,打印信息
                         printInfo("\"比亚迪\"品牌中价格最高的车辆信息为:\n");
                         printInfo();
-                        printInfo(info);
+                        printInfo(vehicle);
                     } else {
                         // 如果数组中暂无比亚迪汽车,打印提示信息
                         printInfo("暂无\"比亚迪\"车辆信息!");
@@ -303,24 +303,29 @@ public class Homework {
      * 6. 查找"比亚迪"中售价最高的
      * <p>
      * 定义变量max初始值-1存储最高售价.
-     * 定义变量vehicle存储当前车辆信息.
-     * 遍历数组,比对出售价最高的车辆信息
+     * 由于最高售价可能相等,因此有可能是有多辆车辆信息
+     * 用字符串数组 vArr 来存储车辆信息
      * <p>
-     * 遍历,
+     * 遍历,找出最高价,再次遍历数组,记录所有最高价的车辆信息
      *
-     * @return 售价最高的车辆信息, 若无比亚迪汽车, 则返回空字符串
+     * @return 售价最高的车辆信息数组, 若无比亚迪汽车, 则返回空数组
      */
-    public static String findMaxCostFromBYD() {
-        String vehicle = "";
+    public static String[] findMaxCostFromBYD() {
+        String[] vArr = {};
+        String[] arr = {};
         int max = -1;
-        for (String v : vehicles) {
-            if (getVehicleBrand(v).equals("比亚迪")) {
-                if (max < getVehicleCost(v)) {
-                    vehicle = v;
+        for (String vehicle : vehicles) {
+            if (getVehicleBrand(vehicle).equals("比亚迪")) {
+                if (max < getVehicleCost(vehicle)) {
+                    vArr = arr;
+                    vArr = addElement(vArr, vehicle);
+                    max = getVehicleCost(vehicle);
+                } else if (max == getVehicleCost(vehicle)) {
+                    vArr = addElement(vArr, vehicle);
                 }
             }
         }
-        return vehicle;
+        return vArr;
     }
 
     /**

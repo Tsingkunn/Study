@@ -1,5 +1,8 @@
 package week1.day5;
 
+import com.sun.security.jgss.GSSUtil;
+import features.lamdba.Array;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -17,12 +20,14 @@ import java.util.Scanner;
  */
 public class Exam0421 {
 
-    static String[] people = {"20230111-李朝宗-男-15067682233-30899", "20230112-杨星阑-男-15067682255-26000",
+    static String[] people = {"20230111-李朝宗-男-15067682233-30899", "20230112-杨星阑-男-15067682255-60000",
             "20230113-唐碗儿-女-15067682266-18899", "20230114-杨婉柔-女-15367682277-60000"};
 
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
+
+
         boolean isLoop = true;
         while (isLoop) {
             showMainPage();
@@ -38,6 +43,7 @@ public class Exam0421 {
                 case 8 -> findPersonByMaxBalance();
                 case 9 -> queryPersonInfoByTelStartedWith();
                 case 10 -> queryAndCountPersonInfoByGender();
+                case 11 -> queryCountInfoByGender();
                 case -1 -> isLoop = false;
                 default -> System.out.println("此功能尚未开发...");
             }
@@ -61,6 +67,7 @@ public class Exam0421 {
                  8、找出余额最高的那个账户信息
                  9、找出电话号码以"150"开头的账户信息
                  10、统计处不同性别的人数，并且显示出这个性别的所有账户信息
+                 11.
                         按-1退出系统
                 """);
     }
@@ -230,7 +237,6 @@ public class Exam0421 {
     public static void findPersonByMaxBalance() {
         // 默认最大值是第一个元素,并记录下标:0
         int max = Integer.parseInt(people[0].split("-")[4]);
-        int index = 0;
 
         // 遍历
         for (int i = 1; i < people.length; i++) {
@@ -238,13 +244,18 @@ public class Exam0421 {
             int balance = Integer.parseInt(people[i].split("-")[4]);
             // 遍历数组比较,找出最大值
             if (max < balance) {
-                index = i;
+                max = balance;
             }
         }
 
         // 输出信息
         System.out.println("余额最高的人的账户信息是:");
-        System.out.println(people[index]);
+
+        for (String person : people) {
+            if (Integer.parseInt(person.split("-")[4]) == max) {
+                System.out.println(person);
+            }
+        }
     }
 
     /**
@@ -264,6 +275,8 @@ public class Exam0421 {
 
     /**
      * 10.统计处不同性别的人数，并且显示出这个性别的所有账户信息
+     * <p>
+     * 固定男女性别写法
      */
     public static void queryAndCountPersonInfoByGender() {
         // 记录男女数量
@@ -294,7 +307,47 @@ public class Exam0421 {
         for (String per : femaleInfo) {
             System.out.println(per);
         }
+
+        // 知道数组长度 ,但每次都在数组后面添加元素,可以不用找下标的方法,可以利用每次数组扩容的方式在数组最后面添加元素
     }
+
+    /**
+     * 10.统计不同性别人数,性别不定
+     */
+    public static void queryCountInfoByGender() {
+        String[] genders = {};
+        int[] counts = {};
+        int count = 0;
+        boolean exist = false;
+        for (String person : people) {
+            String perGender = person.split("-")[2];
+            for (String gender : genders) {
+                if (perGender.equals(gender)) {
+                    exist = true;
+                    break;
+                }
+            }
+            if (!exist) {
+                genders = addElement(genders, perGender);
+            }
+            exist = false;
+        }
+        // 用要统计的信息在数据中遍历
+        for (String gender : genders) {
+            for (String person : people) {
+                if (person.split("-")[2].equals(gender)) {
+                    count++;
+                }
+            }
+            counts = Arrays.copyOf(counts, counts.length + 1);
+            counts[counts.length - 1] = count;
+            count = 0;
+        }
+
+        System.out.println(Arrays.toString(genders));
+        System.out.println(Arrays.toString(counts));
+    }
+
 
     /**
      * 判断添加新用户时输入的id是否合法

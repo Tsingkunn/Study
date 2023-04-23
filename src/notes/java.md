@@ -114,3 +114,63 @@
     "123456".subString(1,3); 
     >>"23"
    ```
+
+#### 4.22
+
+1. Integer.parseInt(str)与Integer.valueOf(str)
+
+    ```java
+    Integer.parseInt(str) 将字符串转换成基本类型int
+    Integer.parseInt(str) 自动拆箱,所以可以用 ==,来判断
+   
+    Integer.valueOf(str) 将字符串转换成Integer类型
+    Integer.valueOf(str) 可以直接对转换的对象调用Integer里面的方法,若数字在 -128~127之间,会直接取缓存,超过则创建新的对象
+    
+   用integer1.equals(integer2) 来判断是否相等
+    ```
+
+#### 4.23
+
+1. 知道数组长度,但每次都在数组后面添加元素,可以不用定义初始长度再找下标的方法,可以利用每次数组扩容的方式在数组最后面添加元素
+   ```java
+    public static void queryCountInfoByGender() {
+        String[] genders = {};
+        int[] counts = {};
+        int count = 0;
+        boolean exist = false;
+        for (String person : people) {
+            String perGender = person.split("-")[2];
+            for (String gender : genders) {
+                if (perGender.equals(gender)) {
+                    exist = true;
+                    break;
+                }
+            }
+            if (!exist) {
+                genders = addElement(genders, perGender);
+            }
+            exist = false;
+        }
+        // 用要统计的信息在数据中遍历
+        for (String gender : genders) {
+            for (String person : people) {
+                if (person.split("-")[2].equals(gender)) {
+                    count++;
+                }
+            }
+            counts = Arrays.copyOf(counts, counts.length + 1);
+            counts[counts.length - 1] = count;
+            count = 0;
+        }
+
+        System.out.println(Arrays.toString(genders));
+        System.out.println(Arrays.toString(counts));
+    }
+   ```
+2. 将字符串转化为字符的方法
+    ```java
+        "string".charAt(0); 
+        >>'s'  
+    ```
+3. 位运算:^异或:相同为0,不同为1
+
