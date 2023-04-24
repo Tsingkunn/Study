@@ -2,7 +2,7 @@
 
 ---
 
-#### 4.19:
+#### 4.19
 
 在数组中关于 **System.arraycopy()** 和 **Arrays.copyOf()** 的应用
 
@@ -38,6 +38,7 @@
    ```
 
 3. 关于字符串的方法:
+
    ```java
    // 以字符串 str 符开始,返回布尔值
    string.startsWith(String str);
@@ -60,6 +61,7 @@
    ```
 
 2. 将数组以["数据 1","数据 2","数据 3"]的格式输出
+
    ```java
    int[]numbers={1,2,3,4};
    Arrays.toString(numbers);
@@ -117,6 +119,7 @@
    ```
 
 4. 获取子字符串
+
    ```java
    // 获取子字符串,从beginIndex(包括)到endIndex(不包括)结束
    // string.subString(beginIndex, endIndex)
@@ -129,13 +132,13 @@
 1. Integer.parseInt(str)与 Integer.valueOf(str)
 
    ```java
-   Integer.parseInt(str) 将字符串转换成基本类型int
-   Integer.parseInt(str) 自动拆箱,所以可以用 ==,来判断
+   Integer.parseInt(str) // 将字符串转换成基本类型int
+   Integer.parseInt(str) // 自动拆箱,所以可以用 ==,来判断
 
-   Integer.valueOf(str) 将字符串转换成Integer类型
-   Integer.valueOf(str) 可以直接对转换的对象调用Integer里面的方法,若数字在 -128~127之间,会直接取缓存,超过则创建新的对象
+   Integer.valueOf(str) // 将字符串转换成Integer类型
+   Integer.valueOf(str) // 可以直接对转换的对象调用Integer里面的方法,若数字在 -128~127之间,会直接取缓存,超过则创建新的对象
 
-   用integer1.equals(integer2) 来判断是否相等
+   integer1.equals(integer2) // 用此方法来判断是否相等
    ```
 
 #### 4.23
@@ -143,46 +146,48 @@
 1. 知道数组长度,但每次都在数组后面添加元素,可以不用定义初始长度再找下标的方法,可以利用每次数组扩容的方式在数组最后面添加元素
 
    ```java
-    public static void queryCountInfoByGender() {
-        String[] genders = {};
-        int[] counts = {};
-        int count = 0;
-        boolean exist = false;
-        for (String person : people) {
-            String perGender = person.split("-")[2];
-            for (String gender : genders) {
-                if (perGender.equals(gender)) {
-                    exist = true;
-                    break;
-                }
+   public static void queryCountInfoByGender() {
+      String[] genders = {};
+      int[] counts = {};
+      int count = 0;
+      boolean exist = false;
+      for (String person : people) {
+         String perGender = person.split("-")[2];
+         for (String gender : genders) {
+            if (perGender.equals(gender)) {
+               exist = true;
+               break;
             }
-            if (!exist) {
-                genders = addElement(genders, perGender);
-            }
-            exist = false;
-        }
+         }
+         if (!exist) {
+            genders = addElement(genders, perGender);
+         }
+         exist = false;
+      }
         // 用要统计的信息在数据中遍历
-        for (String gender : genders) {
-            for (String person : people) {
+      for (String gender : genders) {
+         for (String person : people) {
                 if (person.split("-")[2].equals(gender)) {
                     count++;
                 }
             }
-            counts = Arrays.copyOf(counts, counts.length + 1);
-            counts[counts.length - 1] = count;
-            count = 0;
-        }
+         counts = Arrays.copyOf(counts, counts.length + 1);
+         counts[counts.length - 1] = count;
+         count = 0;
+      }
 
-        System.out.println(Arrays.toString(genders));
-        System.out.println(Arrays.toString(counts));
-    }
+      System.out.println(Arrays.toString(genders));
+      System.out.println(Arrays.toString(counts));
+   }
    ```
 
 2. 将字符串转化为字符的方法
+
    ```java
-       "string".charAt(0);
-       >>'s'
+   "string".charAt(0);
+   >>'s'
    ```
+
 3. 位运算:^异或:相同为 0,不同为 1
 
    ```java
@@ -231,37 +236,38 @@
    ```java
    class Test03 {
       static {
-          System.out.println("run!");
+         System.out.println("run!");
       }
    }
 
    class Test04 {
-       public static void main(String[] args) {
-          new Test03();
-       }
+      public static void main(String[] args) {
+         new Test03();
+      }
    }
    >>"run!"
    ```
 
 5. 关于类中的变量
+
    ```java
-       class Demo {
-           public int id;
-           public String name;
-           @Override
-           public String toString() {
-               // 每次调用同String都会使id自增1;
-               id ++;
-               return id + " ";
-           }
-       }
-       Demo demo = new Demo();
-       // 这个操作也会让id自增.
-       System.ouy.println(demo.id++);
-       // 更有,在对成员变量进行字符串补空格的操作如果也是
-       demo.name = String.format("%-12s", demo.name);
-       // 上述操作也会改变引用中成员变量的数值,str会被补足.
-       //然后将补足后的字符串赋值给原字符串demo.name.
+   class Demo {
+         public int id;
+         public String name;
+         @Override
+         public String toString() {
+            // 每次调用同String都会使id自增1;
+            id ++;
+            return id + " ";
+         }
+   }
+   Demo demo = new Demo();
+   // 这个操作也会让id自增.
+   System.ouy.println(demo.id++);
+   // 更有,在对成员变量进行字符串补空格的操作如果也是
+   demo.name = String.format("%-12s", demo.name);
+   // 上述操作也会改变引用中成员变量的数值,str会被补足.
+   //然后将补足后的字符串赋值给原字符串demo.name.
    ```
 
 #### 4.24
@@ -285,27 +291,23 @@
     - protected: 本类,同包,子类
     - public: 任何地方都可使用
 
-- getter/setter
+  - getter/setter
+  - 构造方法
+  - 方法重载
 
-- 构造方法
-
-- 方法重载
-
-  - 同一类
-  - 方法名一致
-  - 方法的参数列表不一样(类型/个数/顺序)
+    - 同一类
+    - 方法名一致
+    - 方法的参数列表不一样(类型/个数/顺序)
 
   ```java
-     ...
-     public void show(int num) {}
-     public void show(float f) {}
-     ...
-     public void show(int num, String str) {}
-     public void show(String str, int num) {}
-     ...
+  public void show(int num) {}
+  public void show(float f) {}
+   ...
+  public void show(int num, String str) {}
+  public void show(String str, int num) {}
   ```
 
-- 构造方法重载
+  - 构造方法重载
 
   - 同一类
   - 方法名一致
@@ -313,27 +315,29 @@
   - **方法的返回值对方法的重载无影响**
 
   ```java
-   public Job01() {
-       System.out.println("无参构造方法");
-   }
+  public Job01() {
+    System.out.println("无参构造方法");
+  }
 
-   public Job01(int num) {
-       System.out.println("int : " + num);
-   }
+  public Job01(int num) {
+  System.out.println("int : " + num);
+  }
+
   ```
 
-- **static** 关键字
+  - **static** 关键字
 
   - 类在被加载时同时被加载.
   - 只会加载一次,并且内存中只有一块内存空间保存
   - 可以修饰类/方法
-    > 1. static 修饰的方法叫静态方法(类方法),该方法属于这个类,通过 **_类名.静态方法名(实参);_** 调用(用 **_对象.方法名(实参))_** 也能调用
+    > 1. static 修饰的方法叫静态方法(类方法),该方法属于这个类,通过 **_类名.静态方法名(实参);_** 调用(用 \*
+         *_对象.方法名(实参))_** 也能调用
     > 2. 没有被 static 修饰的叫做成员方法,成员方法的调用方式为: **_对象.方法名(实参)_**
 
   ```java
-    public class Job02 {
-       static String name;
-       int age;
+  public class Job02 {
+    static String name;
+    int age;
 
     public Job02(String name, int age) {
        this.name = name;
@@ -348,10 +352,27 @@
        System.out.println(j1.age);
        System.out.println(j2.name);
        System.out.println(j2.age);
-     }
-  }
-  >>圆圆
-  >>20
-  >>圆圆
-  >>16
+       }
+   }
+   >>圆圆
+   >>20
+   >>圆圆
+   >>16
   ```
+
+- 继承
+
+  - public class 类名 extends 父类 { }
+  - 子类只能继承父类中非私有化的属性和方法
+  - 一个子类只能有一个父类,一个父类可以有多个子类
+  - 继承关系满足: xxx(子类) is a xxx(父类)
+  - 一个 B 类继承 A 类:
+
+    1. B 类是 A 类的子类(派生类)
+    2. 类是 B 类的超类(基类,父类)
+
+  - 子类重写父类方法时:
+    1. 问修饰符只能放大.
+    2. 方法的返回值也与父类中相同.
+    3. 方法的参数列表必须完全一致
+    4. 方法名和父类中的方法名必须一致
