@@ -51,7 +51,7 @@ public class VehicleDao {
         Vehicle[] vehicleArr = {};
 
         for (Vehicle vehicle : vehicles) {
-            if (vehicle.type.equals(vType)) {
+            if (vehicle.getType().equals(vType)) {
                 vehicleArr = addElement(vehicleArr, vehicle);
             }
         }
@@ -69,8 +69,8 @@ public class VehicleDao {
         int suvCount = 0;
 
         for (Vehicle vehicle : vehicles) {
-            if (vehicle.structure.equals(vStructure)) {
-                sum += vehicle.cost;
+            if (vehicle.getStructure().equals(vStructure)) {
+                sum += vehicle.getCost();
                 suvCount++;
             }
         }
@@ -92,12 +92,12 @@ public class VehicleDao {
         double max = -1;
 
         for (Vehicle vehicle : vehicles) {
-            if (vehicle.brand.equals(vBrand)) {
-                if (max < vehicle.cost) {
+            if (vehicle.getBrand().equals(vBrand)) {
+                if (max < vehicle.getCost()) {
                     vArr = arr;
                     vArr = addElement(vArr, vehicle);
-                    max = vehicle.cost;
-                } else if (max == vehicle.cost) {
+                    max = vehicle.getCost();
+                } else if (max == vehicle.getCost()) {
                     vArr = addElement(vArr, vehicle);
                 }
             }
@@ -116,7 +116,7 @@ public class VehicleDao {
     public static Vehicle[] queryVehiclesByCost() {
         Vehicle[] vehicleArr = {};
         for (Vehicle vehicle : vehicles) {
-            if (vehicle.cost > 200000) {
+            if (vehicle.getCost() > 200000) {
                 vehicleArr = addElement(vehicleArr, vehicle);
             }
         }
@@ -132,7 +132,7 @@ public class VehicleDao {
     public static Vehicle findVehicleByVid(String vid) {
         Vehicle vehicle = null;
         for (Vehicle v : vehicles) {
-            if (Objects.equals(v.vid, vid)) {
+            if (Objects.equals(v.getVid(), vid)) {
                 vehicle = v;
                 break;
             }
@@ -164,8 +164,8 @@ public class VehicleDao {
         for (Vehicle vehicle : vehicles) {
             // 如果存在,变量index记录当前ArrayList的下标,exit标识已存在当前品牌,并break当前ArrayList的循环
             for (int j = 0; j < veKindsArr.size(); j++) {
-                String existingBrand = veKindsArr.get(j)[0].brand;
-                String currentBrand = vehicle.brand;
+                String existingBrand = veKindsArr.get(j)[0].getBrand();
+                String currentBrand = vehicle.getBrand();
                 // 判断"品牌是否存在"
                 // 如果遍历vehicles的当前车辆品牌,已经被veKindsArr记录,则返回true,代表已经存入该品牌;反之,代表该品牌是一个新品牌
                 if (currentBrand.equals(existingBrand)) {
@@ -205,7 +205,7 @@ public class VehicleDao {
     public static int getIndexByVid(String vid) {
         int index = -1;
         for (int i = 0; i < vehicles.length; i++) {
-            if (Objects.equals(vehicles[i].vid, vid)) {
+            if (Objects.equals(vehicles[i].getVid(), vid)) {
                 index = i;
                 break;
             }
@@ -223,7 +223,7 @@ public class VehicleDao {
      */
     public static boolean isIdExist(String vId) {
         for (Vehicle vehicle : vehicles) {
-            if (vehicle.vid.equals(vId)) {
+            if (vehicle.getVid().equals(vId)) {
                 return true;
             }
         }
@@ -237,14 +237,15 @@ public class VehicleDao {
      * @return 若添加成功, 返回true;反之,返回false
      */
     public static boolean addElement(Vehicle vehicle) {
-        int oldLen = vehicles.length;
+        int olen = vehicles.length;
         // 扩容
         vehicles = Arrays.copyOf(vehicles, vehicles.length + 1);
         // 末位追加数据
         vehicles[vehicles.length - 1] = vehicle;
-        int newLen = vehicles.length;
-
-        return newLen == ++oldLen;
+        // 获取添加数据后的数组长度
+        int len = vehicles.length;
+        // 如果添加成功,旧数组长度+1等于新数组
+        return len == ++olen;
     }
 
     /**

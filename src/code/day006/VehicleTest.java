@@ -96,14 +96,7 @@ public class VehicleTest {
             VehicleUtils.printInfo("请输入车辆车身结构");
             String vStructure = scan.next();
 
-            Vehicle vehicle = new Vehicle();
-
-            vehicle.vid = vid;
-            vehicle.type = vType;
-            vehicle.structure = vStructure;
-            vehicle.cost = vCost;
-            vehicle.style = vStyle;
-            vehicle.brand = vBrand;
+            Vehicle vehicle = new Vehicle(vid, vBrand, vStyle, vCost, vType, vStructure);
 
             // 调用添加方法,如果添加成功返回true
             if (insertVehicleMsg(vehicle)) {
@@ -225,7 +218,7 @@ public class VehicleTest {
 
             // 打印每种品牌的数量与详细信息
             for (Vehicle[] v : veKindsArr) {
-                VehicleUtils.printInfo("品牌为: " + v[0].brand + " 的种类有 " + v.length + " 种");
+                VehicleUtils.printInfo("品牌为: " + v[0].getBrand() + " 的种类有 " + v.length + " 种");
                 VehicleUtils.printInfo();
                 VehicleUtils.printInfo(v);
             }

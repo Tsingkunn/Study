@@ -1,20 +1,32 @@
 package code.day006;
 
+import lombok.Data;
+
+@Data
 public class Vehicle {
     // 车辆编码
-    String vid;
+    private String vid;
     // 车辆品牌
-    String brand;
+    private String brand;
     // 车辆款式
-    String style;
+    private String style;
     // 车辆售价
-    double cost;
+    private double cost;
     // 车辆类型
-    String type;
+    private String type;
     // 车辆结构
-    String structure;
+    private String structure;
 
     public Vehicle() {
+    }
+
+    public Vehicle(String vid, String brand, String style, double cost, String type, String structure) {
+        this.vid = vid;
+        this.brand = brand;
+        this.style = style;
+        this.cost = cost;
+        this.type = type;
+        this.structure = structure;
     }
 
     @Override

@@ -90,10 +90,10 @@
    Arrays.stream(数组).foreach(System.out::println)
    ```
 
-   - 获取数值:
+   - 获取数值
 
    ```java
-   String.of(数组).foreach( e -> System.out.println("元素" + e);
+   Stream.of(数组).foreach( e -> System.out.println("元素" + e);
    ```
 
 3. compareTo() 与 equals() 与 ==
@@ -118,8 +118,8 @@
 
 4. 获取子字符串
    ```java
-   // 获取子字符串,从benginIndex(包括)到endIndex(不包括)结束
-   // string.subString(benginIndex, endIndex)
+   // 获取子字符串,从beginIndex(包括)到endIndex(不包括)结束
+   // string.subString(beginIndex, endIndex)
    "123456".subString(1,3);
    >>"23"
    ```
@@ -263,3 +263,28 @@
        // 上述操作也会改变引用中成员变量的数值,str会被补足.
        //然后将补足后的字符串赋值给原字符串demo.name.
    ```
+
+#### 4.24
+
+1. 什么是类?
+
+   把某一类有相同特征(属性)和行为(方法)抽象出来的概念,叫做类.类是不占用内存的.
+
+2. 什么是对象
+
+   表示在现实生活中存在的事物.Java 中通过 new 关键字来创建一个对象.对象占用内存.
+
+3. 面向对象的三大特征:**封装,继承,多态**
+
+   - > 封装:将类的信息隐藏到内部.
+
+   - 访问修饰符:public , protected , default , private
+
+     - private: 本类.
+     - default: 本类,同包
+     - protected: 本类,同包,子类
+     - public: 任何地方都可使用
+
+   - getter/setter
+
+   - 构造方法
