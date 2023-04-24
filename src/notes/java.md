@@ -260,5 +260,6 @@
        System.ouy.println(demo.id++);
        // 更有,在对成员变量进行字符串补空格的操作如果也是
        demo.name = String.format("%-12s", demo.name);
-       // 上述操作也会改变引用中成员变量的数值,str会被补足.然后将补足后的字符串赋值给原字符串demo.name.
+       // 上述操作也会改变引用中成员变量的数值,str会被补足.
+       //然后将补足后的字符串赋值给原字符串demo.name.
    ```
