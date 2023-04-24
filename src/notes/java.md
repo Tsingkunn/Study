@@ -276,15 +276,82 @@
 
 3. 面向对象的三大特征:**封装,继承,多态**
 
-   - > 封装:将类的信息隐藏到内部.
+- 封装:将类的信息隐藏到内部.
 
-   - 访问修饰符:public , protected , default , private
+  - 访问修饰符:public , protected , default , private
 
-     - private: 本类.
-     - default: 本类,同包
-     - protected: 本类,同包,子类
-     - public: 任何地方都可使用
+    - private: 本类.
+    - default: 本类,同包
+    - protected: 本类,同包,子类
+    - public: 任何地方都可使用
 
-   - getter/setter
+- getter/setter
 
-   - 构造方法
+- 构造方法
+
+- 方法重载
+
+  - 同一类
+  - 方法名一致
+  - 方法的参数列表不一样(类型/个数/顺序)
+
+  ```java
+     ...
+     public void show(int num) {}
+     public void show(float f) {}
+     ...
+     public void show(int num, String str) {}
+     public void show(String str, int num) {}
+     ...
+  ```
+
+- 构造方法重载
+
+  - 同一类
+  - 方法名一致
+  - 方法的参数列表不一样(类型/个数/顺序)
+  - **方法的返回值对方法的重载无影响**
+
+  ```java
+   public Job01() {
+       System.out.println("无参构造方法");
+   }
+
+   public Job01(int num) {
+       System.out.println("int : " + num);
+   }
+  ```
+
+- **static** 关键字
+
+  - 类在被加载时同时被加载.
+  - 只会加载一次,并且内存中只有一块内存空间保存
+  - 可以修饰类/方法
+    > 1. static 修饰的方法叫静态方法(类方法),该方法属于这个类,通过 **_类名.静态方法名(实参);_** 调用(用 **_对象.方法名(实参))_** 也能调用
+    > 2. 没有被 static 修饰的叫做成员方法,成员方法的调用方式为: **_对象.方法名(实参)_**
+
+  ```java
+    public class Job02 {
+       static String name;
+       int age;
+
+    public Job02(String name, int age) {
+       this.name = name;
+       this.age = age;
+    }
+
+    public static void main(String[] args) {
+       Job02 j1 = new Job02("晓峰", 20);
+       Job02 j2 = new Job02("圆圆", 16);
+
+       System.out.println(j1.name);
+       System.out.println(j1.age);
+       System.out.println(j2.name);
+       System.out.println(j2.age);
+     }
+  }
+  >>圆圆
+  >>20
+  >>圆圆
+  >>16
+  ```
