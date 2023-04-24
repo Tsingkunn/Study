@@ -1,8 +1,5 @@
 package code.day006;
 
-import lombok.Data;
-
-@Data
 public class Vehicle {
     // 车辆编码
     private String vid;
@@ -26,6 +23,54 @@ public class Vehicle {
         this.style = style;
         this.cost = cost;
         this.type = type;
+        this.structure = structure;
+    }
+
+    public String getVid() {
+        return vid;
+    }
+
+    public void setVid(String vid) {
+        this.vid = vid;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
+    }
+
+    public double getCost() {
+        return cost;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getStructure() {
+        return structure;
+    }
+
+    public void setStructure(String structure) {
         this.structure = structure;
     }
 
