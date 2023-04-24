@@ -1,4 +1,4 @@
-package week1.day5;
+package code.day005;
 
 public class Test {
     public static void main(String[] s) {

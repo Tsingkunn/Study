@@ -1,12 +1,12 @@
-package week1.day1;
+package code.day001;
 
 public class Job1 {
 
     /**
      * @param args
      * @description Day 001 Homework:
-     *              1. To input a right-angled triangle
-     *              2. TO
+     * 1. To input a right-angled triangle
+     * 2. TO
      */
     public static void main(String[] args) {
 

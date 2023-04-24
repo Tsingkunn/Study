@@ -1,4 +1,4 @@
-package week1.day6;
+package code.day006;
 
 public class VehicleData {
     static Vehicle[] vehicles;

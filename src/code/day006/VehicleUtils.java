@@ -1,4 +1,4 @@
-package week1.day6;
+package code.day006;
 
 public class VehicleUtils {
 
@@ -27,14 +27,7 @@ public class VehicleUtils {
      */
     public static void printInfo(Vehicle[] arr) {
         for (Vehicle vehicle : arr) {
-            String vid = String.format("%-12s\t", vehicle.vid);
-            String brand = String.format("%-12s\t", vehicle.brand);
-            String style = String.format("%-12s\t", vehicle.style);
-            String costStr = String.format("%-12s\t", vehicle.cost);
-            String type = String.format("%-12s\t", vehicle.type);
-            String structure = String.format("%-12s\t", vehicle.structure);
-            String info = vid + brand + style + costStr + type + structure;
-            printInfo(info);
+            printInfo(vehicle.toString());
         }
     }
 

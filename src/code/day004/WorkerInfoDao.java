@@ -1,10 +1,10 @@
-package week1.day4;
+package code.day004;
 
 import java.util.Arrays;
 
 public class WorkerInfoDao {
-    private String[] arr = { "100-司马懿-男-11000", "101-貂蝉-女-18000", "102-孙权-男-12000", "103-黄忠-男-20000", "104-孙尚香-女-13000",
-            "105-诸葛亮-男-15000", "106-西门吹雪-男-16000" };
+    private String[] arr = {"100-司马懿-男-11000", "101-貂蝉-女-18000", "102-孙权-男-12000", "103-黄忠-男-20000", "104-孙尚香-女-13000",
+            "105-诸葛亮-男-15000", "106-西门吹雪-男-16000"};
 
     public String[] showAll() {
         return arr;

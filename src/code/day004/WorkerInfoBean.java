@@ -1,4 +1,4 @@
-package week1.day4;
+package code.day004;
 
 public class WorkerInfoBean {
     private int id;

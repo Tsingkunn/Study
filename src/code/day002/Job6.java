@@ -1,4 +1,4 @@
-package week1.day2;
+package code.day002;
 
 import java.util.Scanner;
 
@@ -14,7 +14,7 @@ public class Job6 {
     }
 
     public static void questionOne() {
-        int nums[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        int nums[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         int sum = 0;
         for (int num : nums) {
             sum += num;

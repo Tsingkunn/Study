@@ -1,4 +1,4 @@
-package week1.day3;
+package code.day003;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class Job8 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        String[] flowerName = { "玫瑰花", "雪莲花", "兰花", "石榴花", "栀子花" };
+        String[] flowerName = {"玫瑰花", "雪莲花", "兰花", "石榴花", "栀子花"};
 
         boolean exist = false;
 

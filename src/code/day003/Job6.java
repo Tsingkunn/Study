@@ -1,11 +1,11 @@
-package week1.day3;
+package code.day003;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Job6 {
     public static void main(String[] args) {
-        String[] arr = { "电水壶", "百岁山", "电视机", "恒大冰泉", "电饭煲", "农夫山泉", "电动牙刷", "电火锅" };
+        String[] arr = {"电水壶", "百岁山", "电视机", "恒大冰泉", "电饭煲", "农夫山泉", "电动牙刷", "电火锅"};
 
         Scanner scan = new Scanner(System.in);
 

@@ -1,4 +1,4 @@
-package week1.day3;
+package code.day003;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class Homework {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        String stuArr[] = { "10023-张三-20-男", "10024-夏雨-22-男", "10025-夏天-23-男", "10026-刘亦菲-20-女", "10027-夏雨-21-女" };
+        String stuArr[] = {"10023-张三-20-男", "10024-夏雨-22-男", "10025-夏天-23-男", "10026-刘亦菲-20-女", "10027-夏雨-21-女"};
 
         // 一:查询所有学生信息
         System.out.println("显示所有学生信息:");

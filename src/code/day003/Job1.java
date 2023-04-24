@@ -1,4 +1,4 @@
-package week1.day3;
+package code.day003;
 
 /**
  * 找出200 - 500之间所有能够整除5的数字，打印在控制台，每行5个。

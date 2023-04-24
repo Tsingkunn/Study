@@ -1,7 +1,4 @@
-package week1.day5;
-
-import com.sun.security.jgss.GSSUtil;
-import features.lamdba.Array;
+package code.day005;
 
 import java.util.Arrays;
 import java.util.Scanner;

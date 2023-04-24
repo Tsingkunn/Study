@@ -1,4 +1,4 @@
-package week1.day6;
+package code.day006;
 
 public class Vehicle {
     // 车辆编码
@@ -15,5 +15,16 @@ public class Vehicle {
     String structure;
 
     public Vehicle() {
+    }
+
+    @Override
+    public String toString() {
+        String vid = String.format("%-12s\t", this.vid);
+        String brand = String.format("%-12s\t", this.brand);
+        String style = String.format("%-12s\t", this.style);
+        String costStr = String.format("%-12s\t", this.cost);
+        String type = String.format("%-12s\t", this.type);
+        String structure = String.format("%-12s\t", this.structure);
+        return vid + brand + style + costStr + type + structure;
     }
 }

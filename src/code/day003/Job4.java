@@ -1,8 +1,8 @@
-package week1.day3;
+package code.day003;
 
 public class Job4 {
     public static void main(String[] args) {
-        int incomes[] = { 5000, 4500, 12000, 9000, 2500, 6000, 7500, 8000, 9000 };
+        int incomes[] = {5000, 4500, 12000, 9000, 2500, 6000, 7500, 8000, 9000};
         int index[] = new int[9];
 
         int count = 0;

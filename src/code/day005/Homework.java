@@ -1,4 +1,4 @@
-package week1.day5;
+package code.day005;
 
 import java.util.ArrayList;
 import java.util.Arrays;

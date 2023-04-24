@@ -1,4 +1,4 @@
-package week1.day3;
+package code.day003;
 
 /**
  * 打印所用的四叶玫瑰数;

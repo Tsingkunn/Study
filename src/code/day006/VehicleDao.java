@@ -1,4 +1,4 @@
-package week1.day6;
+package code.day006;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,7 +45,7 @@ public class VehicleDao {
      * 4. 查询所有的某类型汽车信息.
      * <p>
      *
-     * @return 若有该类型,返回该类型汽车信息的数组;若无该类型,返回null
+     * @return 若有该类型, 返回该类型汽车信息的数组;若无该类型,返回null
      */
     public static Vehicle[] queryVehiclesByMiddleSize(String vType) {
         Vehicle[] vehicleArr = {};
@@ -60,9 +60,9 @@ public class VehicleDao {
 
     /**
      * 5. 计算某类结构的平均价格
-     * 
+     *
      * @param vStructure 汽车的结构信息
-     * @return 若有该结构类型,返回此类型的汽车的平均值;若无,返回0
+     * @return 若有该结构类型, 返回此类型的汽车的平均值;若无,返回0
      */
     public static double calculateAvgByStructure(String vStructure) {
         double sum = 0.0;
@@ -185,7 +185,7 @@ public class VehicleDao {
                 veKindsArr.set(index, veArrTemp);
             } else {
                 // 若不存在,新建一个该品类的车辆信息,格式为{"车辆信息"}
-                Vehicle[] newVeArr = { vehicle };
+                Vehicle[] newVeArr = {vehicle};
                 // 添加到ArrayList之中
                 veKindsArr.add(newVeArr);
             }

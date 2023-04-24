@@ -1,8 +1,8 @@
-package week1.day6;
+package code.day006;
 
 import java.util.*;
 
-import static week1.day6.VehicleDao.*;
+import static code.day006.VehicleDao.*;
 
 public class VehicleTest {
 
@@ -203,7 +203,7 @@ public class VehicleTest {
         // 调用方法查询该编号汽车信息
         Vehicle vehicle = findVehicleByVid(vid);
         // 转存为只有一个元素的数组,便于格式化打印
-        Vehicle[] info = { vehicle };
+        Vehicle[] info = {vehicle};
 
         // 判断是否有该汽车信息
         // 如果接收到的汽车信息的字符串长度大于零,代表有数据;反之,则无,打印提示信息
