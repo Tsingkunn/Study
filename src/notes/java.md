@@ -1,8 +1,8 @@
-## Java
+# Java
 
 ---
 
-#### 4.19
+## 4.19
 
 在数组中关于 **System.arraycopy()** 和 **Arrays.copyOf()** 的应用
 
@@ -50,7 +50,7 @@
    string.split()
    ```
 
-#### 4.20
+## 4.20
 
 1. 补全字符串长度:
 
@@ -68,7 +68,7 @@
    >>[1,2,3,4]
    ```
 
-#### 4.21
+## 4.21
 
 1. 拼接字符串:
 
@@ -83,22 +83,7 @@
    >>"abcdef"
    ```
 
-2. Stream 流遍历数组:
-
-    - 打印:
-
-   ```java
-   Stream.of(数组).foreach(System.out::println);
-   Arrays.stream(数组).foreach(System.out::println)
-   ```
-
-    - 获取数值
-
-   ```java
-   Stream.of(数组).foreach( e -> System.out.println("元素" + e);
-   ```
-
-3. compareTo() 与 equals() 与 ==
+2. compareTo() 与 equals() 与 ==
 
    ```java
    String str1 = "123";
@@ -118,7 +103,7 @@
    >>true
    ```
 
-4. 获取子字符串
+3. 获取子字符串
 
    ```java
    // 获取子字符串,从beginIndex(包括)到endIndex(不包括)结束
@@ -127,7 +112,7 @@
    >>"23"
    ```
 
-#### 4.22
+## 4.22
 
 1. Integer.parseInt(str)与 Integer.valueOf(str)
 
@@ -141,7 +126,7 @@
    integer1.equals(integer2) // 用此方法来判断是否相等
    ```
 
-#### 4.23
+## 4.23
 
 1. 知道数组长度,但每次都在数组后面添加元素,可以不用定义初始长度再找下标的方法,可以利用每次数组扩容的方式在数组最后面添加元素
 
@@ -200,8 +185,8 @@
 
 4. 静态块:静态代码块主要用于类的初始化。它只执行一次，并且在同属于一个类的 main 函数之前执行。
 
-    - 静态代码块会在类被加载时自动执行。
-    - 静态代码块只能定义在类里面，不能定义在方法里面。
+   - 静态代码块会在类被加载时自动执行。
+   - 静态代码块只能定义在类里面，不能定义在方法里面。
 
    ```java
    class Test01 {
@@ -214,9 +199,9 @@
    >>"1234"
    ```
 
-    - 静态代码块里的变量都是局部变量，只在块内有效。
-    - 一个类中可以定义多个静态代码块，按顺序执行。
-    - 静态代码块只能访问类的静态成员，而不允许访问实例成员。
+   - 静态代码块里的变量都是局部变量，只在块内有效。
+   - 一个类中可以定义多个静态代码块，按顺序执行。
+   - 静态代码块只能访问类的静态成员，而不允许访问实例成员。
 
    ```java
    class Test02 {
@@ -231,7 +216,7 @@
    }
    ```
 
-    - 一个类可以使用不包含在任何方法体中的静态代码块，当类被载入时，静态代码块被执行，且只被执行一次，静态块常用来执行类属性的初始化.
+   - 一个类可以使用不包含在任何方法体中的静态代码块，当类被载入时，静态代码块被执行，且只被执行一次，静态块常用来执行类属性的初始化.
 
    ```java
    class Test03 {
@@ -263,14 +248,14 @@
    }
    Demo demo = new Demo();
    // 这个操作也会让id自增.
-   System.ouy.println(demo.id++);
+   System.out.println(demo.id++);
    // 更有,在对成员变量进行字符串补空格的操作如果也是
    demo.name = String.format("%-12s", demo.name);
    // 上述操作也会改变引用中成员变量的数值,str会被补足.
    //然后将补足后的字符串赋值给原字符串demo.name.
    ```
 
-#### 4.24
+## 4.24/4.25
 
 1. 什么是类?
 
@@ -280,24 +265,32 @@
 
    表示在现实生活中存在的事物.Java 中通过 new 关键字来创建一个对象.对象占用内存.
 
-3. 面向对象的三大特征:**封装,继承,多态**
+3. 成员变量与局部变量区别:
+
+   1. **_定义位置_**:成员变量在类里面,方法体外面;局部变量定义在方法体,代码块里面
+   2. **_默认值_**:成员变量如果没有赋值,则会默认值,和数组一样;局部变量必须有默认;
+   3. **_生命周期_**:成员变量随着对象的创建而创建,随着对象被垃圾回收而消失;随着方法进栈而诞生,随着方法出栈而消失
+   4. **_适用范围_**:成员变量整个类中都可使用;局部变量只有在方法体和代码块中执行
+   5. **_存储位置_**:成员变量储存在堆内存中;局部变量储存在栈内存中;
+
+4. 面向对象的三大特征:**封装,继承,多态**
 
 - 封装:将类的信息隐藏到内部.
 
-    - 访问修饰符:public , protected , default , private
+  - 访问修饰符:public , protected , default , private
 
-        - private: 本类.
-        - default: 本类,同包
-        - protected: 本类,同包,子类
-        - public: 任何地方都可使用
+    - private: 本类.
+    - **default: 本类,同包**
+    - protected: 本类,同包,子类
+    - public: 本类,同包,子类,不同包
 
-    - getter/setter
-    - 构造方法
-    - 方法重载
+  - getter/setter
+  - 构造方法
+  - 方法重载
 
-        - 同一类
-        - 方法名一致
-        - 方法的参数列表不一样(类型/个数/顺序)
+    - 同一类
+    - 方法名一致
+    - 方法的参数列表不一样(类型/个数/顺序)
 
   ```java
   public void show(int num) {}
@@ -307,12 +300,12 @@
   public void show(String str, int num) {}
   ```
 
-    - 构造方法重载
+  - 构造方法重载
 
-    - 同一类
-    - 方法名一致
-    - 方法的参数列表不一样(类型/个数/顺序)
-    - **方法的返回值对方法的重载无影响**
+  - 同一类
+  - 方法名一致
+  - 方法的参数列表不一样(类型/个数/顺序)
+  - **方法的返回值对方法的重载无影响**
 
   ```java
   public Job01() {
@@ -325,14 +318,14 @@
 
   ```
 
-    - **static** 关键字
+  - **static** 关键字
 
-    - 类在被加载时同时被加载.
-    - 只会加载一次,并且内存中只有一块内存空间保存
-    - 可以修饰类/方法
-  > 1. static 修饰的方法叫静态方法(类方法),该方法属于这个类,通过 **_类名.静态方法名(实参);_** 调用(用 *
-       *_对象.方法名(实参))_** 也能调用
-  >2. 没有被 static 修饰的叫做成员方法,成员方法的调用方式为: **_对象.方法名(实参)_**
+  - 类在被加载时同时被加载.
+  - 只会加载一次,并且内存中只有一块内存空间保存
+  - 可以修饰类/方法
+
+  > 1. static 修饰的方法叫静态方法(类方法),该方法属于这个类,通过 **_类名.静态方法名(实参);_** 用 **_对象.方法名(实参)_** 也能调用
+  > 2. 没有被 static 修饰的叫做成员方法,成员方法的调用方式为: **_对象.方法名(实参)_**
 
   ```java
   public class Job02 {
@@ -340,7 +333,7 @@
     int age;
 
     public Job02(String name, int age) {
-       this.name = name;
+       Job02.name = name;
        this.age = age;
     }
 
@@ -348,9 +341,9 @@
        Job02 j1 = new Job02("晓峰", 20);
        Job02 j2 = new Job02("圆圆", 16);
 
-       System.out.println(j1.name);
+       System.out.println(name);
        System.out.println(j1.age);
-       System.out.println(j2.name);
+       System.out.println(name);
        System.out.println(j2.age);
        }
    }
@@ -359,21 +352,192 @@
    >>圆圆
    >>16
   ```
-    - 初始化顺序: 静态属性初始化 ->静态方法初始化 -> 普通属性初始化 -> 普通方法快初始化 -> 构造函数初始化
+
+  - 初始化顺序: 静态属性初始化 ->静态方法初始化 -> 普通属性初始化 -> 普通方法快初始化 -> 构造函数初始化
 
 - 继承
 
-    - public class 类名 extends 父类 { }
-    - 子类只能继承父类中非私有化的属性和方法
-    - 一个子类只能有一个父类,一个父类可以有多个子类
-    - 继承关系满足: xxx(子类) is a xxx(父类)
-    - 一个 B 类继承 A 类:
+  - public class 类名 extends 父类 { }
+  - 子类只能继承父类中非私有化的属性和方法
+  - **_构造方法不能被继承_**
+  - 一个子类只能有一个父类,一个父类可以有多个子类
+  - 继承关系满足: xxx(子类) is a xxx(父类)
+  - 一个 B 类继承 A 类:
 
-        1. B 类是 A 类的子类(派生类)
-        2. 类是 B 类的超类(基类,父类)
+    1. B 类是 A 类的子类(派生类)
+    2. 类是 B 类的超类(基类,父类)
 
-    - 子类重写父类方法时:
-        1. 问修饰符只能放大.
-        2. 方法的返回值也与父类中相同.
-        3. 方法的参数列表必须完全一致
-        4. 方法名和父类中的方法名必须一致
+  - 子类重写父类方法时:
+
+    1. 问修饰符只能放大.
+    2. 方法的返回值也与父类中相同.
+    3. 方法的参数列表必须完全一致
+    4. 方法名和父类中的方法名必须一致
+
+       **方法的重载与重写**
+
+       1.方法的重写:方法的重写是子类对父类中非私有,非 final,非 static 的方法的重新实现.
+       返回值,方法名,参数列表必须完全一致, 且子类方法访问修饰符只能对比父类的只能扩大访问范围,不能缩小. 2.方法的重载:在同一类中,方法名相同,参数列表不同,返回值可以不同.同一类中,故访问范围可以扩大或缩小
+       区别:① 位置不同 ② 参数列表不同 ③ 返回值不同 ④ 访问范围不同
+
+  - this 与 super
+
+    - this:表示当前类对象.
+
+      `可以调用本类属性,方法,构造方法` **this 调用构造方法时,只能在本类构造方法内的第一行**
+
+  ```java
+  public class Student {
+
+   String name;
+
+   String gender;
+
+   public Student() {
+       // this 调用构造方法只能在构造方法第一行
+       this("乔治", "男");
+   }
+
+   public Student(String name, String gender) {
+       this.name = name;
+       this.gender = gender;
+   }
+
+   public void speak() {
+       System.out.println("speak!");
+   }
+
+   public void showInfo(String name) {
+       System.out.println(this.name);
+       this.speak();
+   }
+
+   public static void main(String[] args) {
+       Student student = new Student();
+       student.showInfo("");
+   }
+  }
+  >>乔治
+  >>speak!
+  ```
+
+  - super:出现在有继承关系的子类中
+
+    - `可以调用父类的属性,方法,构造方法` **构造方法只能在子类的构造方法的第一行来 super 父类的构造方法,如果子类构造方法中没有
+      super 父类的构造方法,那么编译时会默认 super()父类的方法**
+      > 如果省略不写 super() ,那么默认第一行会调用父类的构造方法 super();
+      > 也可以调用有参的构造函数
+      > 当父类没有无参构造方法时,子类有无参构造,如果没有 super 父类的有参构造,
+      > 将会默认 super()父类的无参构造,但由于父类没有无参构造,所以程序将会程序无法编译,
+      > 所以这时必须要手动 super()父类的有参构造
+
+  ```java
+  public class Person {
+    String name;
+    String gender;
+
+    public Person() {
+        System.out.println("无参构造");
+    }
+    public Person(String name, String gender) {
+      this.name = name;
+      this.gender = gender;
+    }
+
+    public void eat() {
+       System.out.println("吃---");
+    }
+  }
+  ```
+
+  ```java
+   public class Teacher extends Person {
+      public Teacher() {
+         // 如果省略不写 super() ,那么默认第一行会调用父类的构造方法
+         // super();
+         // 也可以调用有参的构造函数
+         // 当父类没有无参构造方法时,子类有无参构造,如果没有super父类的有参构造,
+         // 将会默认super()父类的无参构造,但由于父类没有无参构造,将会程序无法编译,
+         // 所以要手动super()父类的有参构造
+         super("", "");
+      }
+
+      public Teacher(String name, String gender) {
+         super(name, gender);
+      }
+
+      public void showInfo() {
+         System.out.println(super.name);
+         System.out.println(super.gender);
+         super.eat();
+      }
+
+      public static void main(String[] args) {
+         Teacher teacher = new Teacher();
+
+         teacher.showInfo();
+      }
+   }
+  ```
+
+  - final: 可以修饰类,方法,变量
+
+    - 被 final 修饰的类不能被继承
+    - 被 final 修饰的方法不能被重写(无所谓重载)
+    - 被 final 修饰的成员变量必须给初始值,成员变量一旦被定义就不能被修改.
+    - 被 final 修饰的局部变量可以不赋初始值,但一旦赋值也不能被更改
+
+  - 抽象类:
+
+    - 抽象类不能被实例化
+    - 抽象类主要是用来承载抽象方法的,如果一个抽象类里面没有抽象方法,那么抽象类也没有存在的必要了
+    - 抽象类必须被继承,抽象类中的抽象方法必须被实现
+    - 子类不能降低继承的抽象类中的方法的访问范围
+    - 抽象类中可以定义构造方法,主要用来给子类用来初始化使用
+    - 如果一个子类没有全部实现父类方法,那么这个子类是个抽象类.
+
+  ```java
+  // 抽象类可以定义普通类中的所有属性和方法
+  // 抽象类中可以定义抽象方法,如果没有抽象方法,那么抽象类的存在没有意义
+  public abstract class Animal {
+      String name;
+      String age;
+
+      public Animal() {}
+
+      public Animal(String name) {}
+
+      // 抽象方法的定义:
+      // 访问修饰符 abstract 返回值类型 方法名();
+      public abstract void eat();
+
+      public abstract void run();
+  }
+
+   // 抽象类可以被继承,继承的类亦可以是抽象类
+   // 如果是普通类,则必须实现抽象类中的所有方法;
+   // 如果是抽象类,可以不用实现抽象方法,
+  public abstract class Dog extends Animal {
+
+      @Override
+      public void eat() {}
+
+  }
+  ```
+
+- 接口
+
+  - 定义 : 访问修饰符 interface 接口名{}
+  - 特点 :
+
+    1. 不能被实例化
+    2. 都是抽象方法,接口中方法默认都是抽象方法,默认添加 public abstract 修饰符, 所有方法都是 public
+    3. 不能定义构造方法
+    4. 接口中变量都是常量,定义成员变量必须有初始值.默认添加 public static final,如 public static final int AGE = 10 或 int AGE = 10;
+    5. 接口与接口之间可以实现多继承(extends)
+    6. 抽象类中不必实现接口中的抽象方法
+
+  - 实现:
+
+    - 访问修饰符 interface 接口名 {}
+      **_只能先继承,后实现_**

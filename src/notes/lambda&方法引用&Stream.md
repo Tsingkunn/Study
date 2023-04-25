@@ -306,16 +306,16 @@ public boolean equals(Object obj) {
 在类里面注解@EqualsAndHashCode 相当于重写了 equals()与 hashCode()
 
 ```java
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Author author = (Author) o;
-        return id == author.id && Objects.equals(name, author.name) && Objects.equals(age, author.age) && Objects.equals(intro, author.intro) && Objects.equals(books, author.books);
-    }
+@Override
+public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Author author = (Author) o;
+    return id == author.id && Objects.equals(name, author.name) && Objects.equals(age, author.age) && Objects.equals(intro, author.intro) && Objects.equals(books, author.books);
+}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, age, intro, books);
-    }
+@Override
+public int hashCode() {
+    return Objects.hash(id, name, age, intro, books);
+}
 ```

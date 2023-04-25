@@ -1,14 +1,5 @@
 package practice.features.stream;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode
 public class Book {
 
     // id
@@ -21,4 +12,56 @@ public class Book {
     private Integer score;
     // 简介
     private String intro;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
+    }
+
+    public Book() {
+
+    }
+
+    public Book(long id, String name, String category, Integer score, String intro) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.score = score;
+        this.intro = intro;
+    }
 }

@@ -12,7 +12,7 @@ public class Job1 {
         } else {
             System.out.println(number + " 不是素数");
         }
-
+        scan.close();
     }
 
     /**

@@ -18,6 +18,5 @@ public class Job02 {
         System.out.println(j2.name);
         System.out.println(j2.age);
 
-        
     }
 }

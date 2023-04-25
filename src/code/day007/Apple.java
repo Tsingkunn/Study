@@ -1,7 +1,5 @@
 package code.day007;
 
-import practice.features.internal.run.App;
-
 public class Apple {
     int i = 0;
 
@@ -14,5 +12,6 @@ public class Apple {
         Apple apple = new Apple();
         apple.eatApple().eatApple().eatApple().eatApple().eatApple().eatApple().eatApple().eatApple();
         System.out.println("吃了 " + apple.i + "次苹果");
+
     }
 }
