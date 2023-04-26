@@ -18,8 +18,11 @@ public class ArrayTest {
         array.list.add(-5);
         array.list.add(9);
         // >> -1,-1,-3,1,5,4,-7,8,-5,9
-//        System.out.println(array.filter().sort().toString());
+        System.out.println(array.filter().sort().toString());
         // >>Array{list=[4, 5, 8, 9]}
+
+        String s1;
+        
     }
 
 }

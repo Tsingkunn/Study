@@ -6,13 +6,12 @@ import java.util.stream.Stream;
 public class Application {
     public static void main(String[] args) {
         test07();
-
     }
 
     private static void test07() {
         List<Author> authors = getAuthors();
         // 去重,降序排序
-        authors.stream().distinct().sorted();
+        authors.stream().distinct().sorted().forEach(System.out::println);
 
     }
 
@@ -32,11 +31,11 @@ public class Application {
                 .map(age -> age + 10)
                 .forEach(System.out::println);
 
-//        authors.stream()
+        // authors.stream()
         // 把author转换成字符串
         // 参数是两个泛型,把第一个泛型转换成第二个泛型
-//                .map(Author::getName)
-//                .forEach(System.out::println);
+        // .map(Author::getName)
+        // .forEach(System.out::println);
     }
 
     private static void test04() {
@@ -47,7 +46,7 @@ public class Application {
     }
 
     private static void test02() {
-        Integer[] arr = {1, 2, 3, 4, 5, 5};
+        Integer[] arr = { 1, 2, 3, 4, 5, 5 };
         Arrays.stream(arr)
                 .distinct()
                 .filter(integer -> integer > 3)
@@ -75,10 +74,10 @@ public class Application {
     }
 
     public static void test01(List<Author> authors) {
-        authors.stream() //把集合转换成流
-                .distinct() //去重
-                .filter(author -> author.getAge() < 18) //过滤
-                .forEach(author -> System.out.println(author.getName())); //遍历;
+        authors.stream() // 把集合转换成流
+                .distinct() // 去重
+                .filter(author -> author.getAge() < 18) // 过滤
+                .forEach(author -> System.out.println(author.getName())); // 遍历;
     }
 
     private static List<Author> getAuthors() {

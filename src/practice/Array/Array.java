@@ -1,13 +1,19 @@
 package practice.Array;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Array {
 
     ArrayList<Integer> list;
 
-    Array filter(Compare<Array> compare) {
-        
+    Array filter() {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) < 3) {
+                list.remove(i);
+                i--;
+            }
+        }
         return this;
     }
 

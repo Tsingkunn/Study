@@ -183,57 +183,7 @@
    >>7
    ```
 
-4. 静态块:静态代码块主要用于类的初始化。它只执行一次，并且在同属于一个类的 main 函数之前执行。
-
-   - 静态代码块会在类被加载时自动执行。
-   - 静态代码块只能定义在类里面，不能定义在方法里面。
-
-   ```java
-   class Test01 {
-       static {
-           System.out.println("1234");
-       }
-       public static void main(String[] args){
-       }
-   }
-   >>"1234"
-   ```
-
-   - 静态代码块里的变量都是局部变量，只在块内有效。
-   - 一个类中可以定义多个静态代码块，按顺序执行。
-   - 静态代码块只能访问类的静态成员，而不允许访问实例成员。
-
-   ```java
-   class Test02 {
-      // 成员变量(类比C的"全局变量")
-       static int a = 0;
-       static {
-           // 局部变量
-           a = 0;
-           // 定义int整型变量b,只能在静态块中使用,无法被静态块外部调用
-           int b = 1;
-       }
-   }
-   ```
-
-   - 一个类可以使用不包含在任何方法体中的静态代码块，当类被载入时，静态代码块被执行，且只被执行一次，静态块常用来执行类属性的初始化.
-
-   ```java
-   class Test03 {
-      static {
-         System.out.println("run!");
-      }
-   }
-
-   class Test04 {
-      public static void main(String[] args) {
-         new Test03();
-      }
-   }
-   >>"run!"
-   ```
-
-5. 关于类中的变量
+4. 关于类中的变量
 
    ```java
    class Demo {
@@ -255,7 +205,7 @@
    //然后将补足后的字符串赋值给原字符串demo.name.
    ```
 
-## 4.24/4.25
+## 面向对象
 
 1. 什么是类?
 
@@ -351,6 +301,56 @@
    >>20
    >>圆圆
    >>16
+  ```
+
+  静态块:静态代码块主要用于类的初始化。它只执行一次，并且在同属于一个类的 main 函数之前执行。
+
+  - 静态代码块会在类被加载时自动执行。
+  - 静态代码块只能定义在类里面，不能定义在方法里面。
+
+  ```java
+  class Test01 {
+      static {
+          System.out.println("1234");
+      }
+      public static void main(String[] args){
+      }
+  }
+  >>"1234"
+  ```
+
+  - 静态代码块里的变量都是局部变量，只在块内有效。
+  - 一个类中可以定义多个静态代码块，按顺序执行。
+  - 静态代码块只能访问类的静态成员，而不允许访问实例成员。
+
+  ```java
+  class Test02 {
+     // 成员变量(类比C的"全局变量")
+      static int a = 0;
+      static {
+          // 局部变量
+          a = 0;
+          // 定义int整型变量b,只能在静态块中使用,无法被静态块外部调用
+          int b = 1;
+      }
+  }
+  ```
+
+  - 一个类可以使用不包含在任何方法体中的静态代码块，当类被载入时，静态代码块被执行，且只被执行一次，静态块常用来执行类属性的初始化.
+
+  ```java
+  class Test03 {
+     static {
+        System.out.println("run!");
+     }
+  }
+
+  class Test04 {
+     public static void main(String[] args) {
+        new Test03();
+     }
+  }
+  >>"run!"
   ```
 
   - 初始化顺序: 静态属性初始化 ->静态方法初始化 -> 普通属性初始化 -> 普通方法快初始化 -> 构造函数初始化
@@ -541,3 +541,63 @@
 
     - 访问修饰符 interface 接口名 {}
       **_只能先继承,后实现_**
+
+- 多态
+
+  - 提高代码的扩展性,复用性
+  - 解耦
+
+  - 实现多态的特点:
+
+    1. 有继承和实现关系.
+    2. 子类中必须要重写父类/父接口中的方法.
+    3. 父类的引用指向了子类的引用. `Vehicle vehicle = new Car();`
+    4. 多态中是向上转型的.父类中的引用只能调用父类对子类重写的方法.不能调用子类中新增的方法.如果想调用子类中的方法,必须向下转型.
+
+## 集合
+
+- 单列集合
+
+  - Collection(接口) --> 子接口 List , Set
+
+    - List(接口):集合元素有序可重复的集合
+
+      1. ArrayList 使用:
+
+      > 1. 构造方法: 无参构造方法默认大小是 10
+      > 2. add(E) 末尾追加元素
+      >    add(int index, E element) 向指定下标添加元素
+      >    addAll(Collection<? extends E> c) 向集合末尾添加一个新的集合
+      >    clear() 删除所有元素
+      >    contains(Object o) 集合中包含某元素
+      >    get(index) 获取集合中指定位置元素
+      >    indexOf(Object o) 返回此列表中指定元素的第一次出现的索引，如果此列表不包含元素，则返回-1。
+      >    isEmpty() 如果此列表不包含元素，则返回 true
+      >    set(index, E) 用指定的元素（可选操作）替换此列表中指定位置的元素。
+      >    remove(index) 删除该列表中指定位置的元素
+      >    remove(obj) 从列表中删除指定元素的第一个出现（如果存在）
+      >    removeAll(Collection<?> c) 从此列表中删除包含在指定集合中的所有元素
+      >    size() 返回当前集合元素个数
+      >    sort()
+      >    sort(Comparator<? super E> c) 指定规则排序
+      >    subList(int fromIndex, int toIndex) 返回此列表中指定的 fromIndex （含）和 toIndex 之间的 List。
+      > 3. 遍历集合的方式:for;for-each;iterator
+      >
+      > ```java
+      > Iterator it = list.iterator();
+      >
+      > while (it.hasNext()) {
+      >   if (it.next().equals("cc")) {
+      >       // 迭代器的remove方法每次删除元素之后会更新迭代器.
+      >       // List的remove方法每次删除元素之后不会更新迭代器信息
+      >       it.remove();
+      >   }
+      > }
+      > ```
+      >
+      > 对数组的增加,删除操作,不要再 foreach 中进行.foreach 中的删除添> 加操作不会修改迭代器信息.会抛出异常.
+
+    - Set(接口):集合元素无序不重复的集合
+
+- 双列集合
+  - Map<K,V>

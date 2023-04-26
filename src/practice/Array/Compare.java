@@ -1,6 +1,8 @@
 package practice.Array;
 
+import java.util.ArrayList;
+
 public interface Compare<T> {
 
-    boolean test(T compare);
+    boolean test(ArrayList list);
 }
