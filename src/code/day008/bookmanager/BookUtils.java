@@ -1,10 +1,11 @@
 package code.day008.bookmanager;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 
-public class BookUtils {
+public class BookUtils implements Comparator<Book> {
     public final static Scanner scan = new Scanner(System.in);
 
     public static boolean isLoop = true;
@@ -43,5 +44,11 @@ public class BookUtils {
         String type = String.format("%-12s\t", book.getType());
         String isOver = String.format("%-12s\t", book.getIsOver() == 1 ? "完结" : "连载中");
         return bid + name + author + pop + type + isOver;
+       
+    }
+
+    @Override
+    public int compare(Book book1, Book book2) {
+        return book2.getPop() - book1.getPop();
     }
 }

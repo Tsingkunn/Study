@@ -595,9 +595,55 @@
       > }
       > ```
       >
-      > 对数组的增加,删除操作,不要再 foreach 中进行.foreach 中的删除添> 加操作不会修改迭代器信息.会抛出异常.
+      > 对数组的增加,删除操作,不要再 foreach 中进行.foreach 中的删除添,加操作不会修改迭代器信息.会抛出异常.
+
+      2. LinkedList 链表实现.添加,删除元素效率高,查找慢
+         ArrayList 数组实现.添加,是删除元素效率低,查找快
 
     - Set(接口):集合元素无序不重复的集合
+      - 元素在集合中的顺序不遵循循环放入的顺序
+      - HashSet:
+        - 无序
+        - 遍历: for-each,iterator
+      - TreeSet:
+        - 有序,创建时引用对象要实现 Comparable 接口,或者引用对象没实现时,new Comparator() {}用匿名内部类来构造.
 
 - 双列集合
   - Map<K,V>
+    - HashMap: 元素是无序的不重复的.键值对(K,V)方式存放.K 是无序,不重复. V 是可以重复的.V 也可以是 null
+    - 遍历: for-each, iterator
+    ```java
+      for (String key : map.keySet()) {
+         System.out.println(map.get(key));
+      }
+      //---
+      Iterator<String> it = map.keySet().iterator();
+      while (it.hasNext()) {
+         String key = it.next();
+         map.get(key);
+      }
+    ```
+    - > entrySet(); 返回一个`Set(Map.Entry<K,V>)`
+      > values(); 返回一个`Collection<V>`
+
+## 泛型
+
+1. 把数据类型参数化.
+2. 泛型的实现
+   - 泛型类
+   - 泛型接口
+   - 泛型方法
+3. 泛型符号:
+   E element
+   K key
+   V value
+   ...
+4. <泛型符号 1,反省符号 2,...>
+5. 泛型类
+   - 访问修饰符 class 类名 <泛型符号,...> {}
+6. 泛型接口
+   - 访问修饰符 interface 接口名 <泛型符号,...> {}
+7. 泛型方法
+   - 访问修饰符 [static] <泛型符号,...> 返回值类型 方法名 ([泛型] 参数, 参数列表...) {
+     [return 值[泛型]]
+     }
