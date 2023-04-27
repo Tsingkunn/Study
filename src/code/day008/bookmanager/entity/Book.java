@@ -1,8 +1,8 @@
-package code.day008.bookmanager;
+package code.day008.bookmanager.entity;
 
 import java.util.Objects;
 
-public class BookEntity implements Comparable<BookEntity> {
+public class Book implements Comparable<Book> {
     // 图书编号
     private String bid;
 
@@ -21,10 +21,10 @@ public class BookEntity implements Comparable<BookEntity> {
     // 是否完结
     private int isOver;
 
-    public BookEntity() {
+    public Book() {
     }
 
-    public BookEntity(String bid, String name, String author, int pop, String type, int isOver) {
+    public Book(String bid, String name, String author, int pop, String type, int isOver) {
         this.bid = bid;
         this.name = name;
         this.author = author;
@@ -85,8 +85,8 @@ public class BookEntity implements Comparable<BookEntity> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BookEntity bookEntity = (BookEntity) o;
-        return pop == bookEntity.pop && isOver == bookEntity.isOver && Objects.equals(bid, bookEntity.bid) && Objects.equals(name, bookEntity.name) && Objects.equals(author, bookEntity.author) && Objects.equals(type, bookEntity.type);
+        Book book = (Book) o;
+        return pop == book.pop && isOver == book.isOver && Objects.equals(bid, book.bid) && Objects.equals(name, book.name) && Objects.equals(author, book.author) && Objects.equals(type, book.type);
     }
 
     @Override
@@ -107,7 +107,7 @@ public class BookEntity implements Comparable<BookEntity> {
     }
 
     @Override
-    public int compareTo(BookEntity bookEntity) {
-        return this.getPop() - bookEntity.getPop();
+    public int compareTo(Book book) {
+        return this.getPop() - book.getPop();
     }
 }
