@@ -1,6 +1,5 @@
 package code.day009;
 
-import java.util.Comparator;
 import java.util.TreeSet;
 
 public class TestStudent {
@@ -13,7 +12,7 @@ public class TestStudent {
         Student student6 = new Student("小F", 19, "成都");
         Student student7 = new Student("小G", 19, "成都");
         Student student8 = new Student("小H", 19, "成都");
-        
+
         TreeSet<Student> set = new TreeSet<>();
 
         set.add(student1);

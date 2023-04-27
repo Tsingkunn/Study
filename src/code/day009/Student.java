@@ -20,14 +20,6 @@ public class Student implements Comparable<Student> {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return age == student.age && Objects.equals(name, student.name) && Objects.equals(addr, student.addr);
-    }
-
-    @Override
     public int hashCode() {
         return Objects.hash(name, age, addr);
     }
@@ -69,7 +61,7 @@ public class Student implements Comparable<Student> {
     @Override
     public int compareTo(Student student) {
         if (this.getAge() == student.getAge()) {
-            return this.name.compareTo(student.getName());
+            return -1;
         }
         return this.getAge() - student.getAge();
     }

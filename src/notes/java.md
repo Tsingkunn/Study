@@ -647,3 +647,25 @@
    - 访问修饰符 [static] <泛型符号,...> 返回值类型 方法名 ([泛型] 参数, 参数列表...) {
      [return 值[泛型]]
      }
+
+## == 与 equals
+
+1. == :
+   直接比较地址
+   基本数据类型的比较
+
+2. equals :
+   Object 中的 equals 是直接用 ==
+   如果要实现两个对象内容相等,应该要重写 equals
+   对于 String.
+
+   ```java
+      String str1 = "abc";
+      String str2 = new String("abc");
+
+      str1 == str2; // false
+      str1.equals(str2) // true
+
+      str2.intern();
+       str1 == str2; // true
+   ```

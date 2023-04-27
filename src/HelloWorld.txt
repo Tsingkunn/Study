@@ -1,0 +1,4 @@
+hello WORLD
+HELLO world
+
+use for src/practice/baseclass/File/FileReaderTest.java

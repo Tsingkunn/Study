@@ -1,16 +1,38 @@
 package practice.copy;
 
-public class Book implements Cloneable {
+import com.sun.source.tree.NewArrayTree;
+
+import java.io.*;
+
+public class Book implements Cloneable, Serializable {
 
     private String name;
-    private int age;
+
+    private int page;
+
 
     public Book() {
     }
 
-    public Book(String name, int age) {
+    public Book(String name, int page) {
         this.name = name;
-        this.age = age;
+        this.page = page;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
     }
 
     @Override
@@ -22,19 +44,5 @@ public class Book implements Cloneable {
         }
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
 }

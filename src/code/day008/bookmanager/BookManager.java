@@ -32,8 +32,9 @@ public class BookManager {
                 case 8 -> showBookInfoByPopThanFiftyThousands();
                 // 9.根据图书类型进行分组,显示每中图书类型的总数量以及每个类型下具体的商品信息？
                 case 9 -> showBookInfoByKinds();
-                case 10 -> showBookInfoByKindsUseMap();
-                case 11 -> showBookInfoByKindsUseMapTips();
+                case 10 -> showBookInfoByKindsUseMapOne();
+                case 11 -> showBookInfoByKindsUseMapTwo();
+                case 12 -> showBookInfoByKindsUseMapThree();
 //                case 10 -> {
 //                    List<Book> bookList = bookDAO.selectAllBookInfo();
 //                    bookList.sort(Book::compareTo);
@@ -47,7 +48,31 @@ public class BookManager {
         }
     }
 
-    private void showBookInfoByKindsUseMapTips() {
+    private void showBookInfoByKindsUseMapThree() {
+        List<Book> list = bookDAO.selectAllBookInfo();
+
+        Map<String, List<Book>> map = new HashMap<>();
+        while (list.size() > 0) {
+            List<Book> bl = new ArrayList<>();
+            String type = list.get(0).getType();
+            for (int i = 0; i < list.size(); i++) {
+                if (type.equals(list.get(i).getType())) {
+                    bl.add(list.get(i));
+                    list.remove(i);
+                    i--;
+                }
+            }
+            map.put(type, bl);
+        }
+        // 打印
+        BookUtils.print("图书有 " + map.size() + " 类,分别如下:");
+        for (String key : map.keySet()) {
+            BookUtils.print(key + "类有如下信息:");
+            BookUtils.print(map.get(key));
+        }
+    }
+
+    private void showBookInfoByKindsUseMapTwo() {
         //  所有书籍的list
         List<Book> list = bookDAO.selectAllBookInfo();
         // 定义的map
@@ -86,7 +111,7 @@ public class BookManager {
         }
     }
 
-    private void showBookInfoByKindsUseMap() {
+    private void showBookInfoByKindsUseMapOne() {
         // 这个是获取全部的信息
         List<Book> list = bookDAO.selectAllBookInfo();
         Map<String, Integer> map = new HashMap<>();

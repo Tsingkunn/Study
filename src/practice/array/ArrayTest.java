@@ -1,4 +1,4 @@
-package practice.Array;
+package practice.array;
 
 import java.util.ArrayList;
 
@@ -22,7 +22,7 @@ public class ArrayTest {
         // >>Array{list=[4, 5, 8, 9]}
 
         String s1;
-        
+
     }
 
 }

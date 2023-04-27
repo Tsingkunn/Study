@@ -3,8 +3,6 @@ package code.day009;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 
 public class Test03 {
 
@@ -38,6 +36,5 @@ public class Test03 {
             String key = it.next();
             map.get(key);
         }
-
     }
 }

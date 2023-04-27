@@ -1,9 +1,7 @@
-package practice.Array;
+package practice.array;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -29,7 +27,7 @@ public class AnArray {
 
         // compareTo, equals(), ==
         String str1 = "123";
-        String str2 = new String("123");
+        String str2 = "123";
         String str3 = "1234";
         String str4 = "123";
         System.out.println(str1.compareTo(str2));
