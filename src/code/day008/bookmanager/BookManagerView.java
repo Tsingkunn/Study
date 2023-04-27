@@ -1,10 +1,8 @@
 package code.day008.bookmanager;
 
-import practice.features.lamdba.Array;
-
 import java.util.*;
 
-public class BookManager {
+public class BookManagerView {
 
     BookDAO bookDAO = new BookDAO();
 
@@ -35,11 +33,7 @@ public class BookManager {
                 case 10 -> showBookInfoByKindsUseMapOne();
                 case 11 -> showBookInfoByKindsUseMapTwo();
                 case 12 -> showBookInfoByKindsUseMapThree();
-//                case 10 -> {
-//                    List<Book> bookList = bookDAO.selectAllBookInfo();
-//                    bookList.sort(Book::compareTo);
-//                    bookList.forEach(System.out::println);
-//                }
+
                 // -1.退出
                 case -1 -> exit();
                 // 显示默认信息
@@ -49,11 +43,11 @@ public class BookManager {
     }
 
     private void showBookInfoByKindsUseMapThree() {
-        List<Book> list = bookDAO.selectAllBookInfo();
+        List<BookEntity> list = bookDAO.selectAllBookInfo();
 
-        Map<String, List<Book>> map = new HashMap<>();
+        Map<String, List<BookEntity>> map = new HashMap<>();
         while (list.size() > 0) {
-            List<Book> bl = new ArrayList<>();
+            List<BookEntity> bl = new ArrayList<>();
             String type = list.get(0).getType();
             for (int i = 0; i < list.size(); i++) {
                 if (type.equals(list.get(i).getType())) {
@@ -74,29 +68,29 @@ public class BookManager {
 
     private void showBookInfoByKindsUseMapTwo() {
         //  所有书籍的list
-        List<Book> list = bookDAO.selectAllBookInfo();
+        List<BookEntity> list = bookDAO.selectAllBookInfo();
         // 定义的map
-        Map<String, List<Book>> map = new HashMap<>();
+        Map<String, List<BookEntity>> map = new HashMap<>();
         // 所有书都遍历一遍
-        for (Book book : list) {
+        for (BookEntity bookEntity : list) {
             // 从map里面取当前书籍的type
             // 如果没有这个类型,那么会返回一个空值
-            if (map.get(book.getType()) == null) {
+            if (map.get(bookEntity.getType()) == null) {
                 // 如果是空值.新建一个list集合
-                List<Book> bl = new ArrayList<>();
+                List<BookEntity> bl = new ArrayList<>();
                 // 把当前这个书放进list
-                bl.add(book);
+                bl.add(bookEntity);
                 // 放类型,放list
-                map.put(book.getType(), bl);
+                map.put(bookEntity.getType(), bl);
             } else {
                 // 如果有这个类型了
                 // 获取当前类型的list,list有他所有的书
-                List<Book> bl = map.get(book.getType());
+                List<BookEntity> bl = map.get(bookEntity.getType());
                 // 把新的书放进list
-                bl.add(book);
+                bl.add(bookEntity);
                 // 这个key我们是知道有的.
                 // 我们用这个新的list,覆盖原来的旧list
-                map.put(book.getType(), bl);
+                map.put(bookEntity.getType(), bl);
             }
         }
 
@@ -113,15 +107,15 @@ public class BookManager {
 
     private void showBookInfoByKindsUseMapOne() {
         // 这个是获取全部的信息
-        List<Book> list = bookDAO.selectAllBookInfo();
+        List<BookEntity> list = bookDAO.selectAllBookInfo();
         Map<String, Integer> map = new HashMap<>();
 
         // kye-书籍类型;value-类型的数量
-        for (Book book : list) {
-            if (map.get(book.getType()) == null) {
-                map.put(book.getType(), 0);
+        for (BookEntity bookEntity : list) {
+            if (map.get(bookEntity.getType()) == null) {
+                map.put(bookEntity.getType(), 0);
             } else {
-                map.put(book.getType(), map.get(book.getType()) + 1);
+                map.put(bookEntity.getType(), map.get(bookEntity.getType()) + 1);
             }
         }
         // 如果系统中有书籍.打印信息
@@ -130,9 +124,9 @@ public class BookManager {
             for (String key : map.keySet()) {
                 BookUtils.print(key + "类有如下信息:");
                 BookUtils.print();
-                for (Book book : list) {
-                    if (book.getType().equals(key)) {
-                        BookUtils.print(book);
+                for (BookEntity bookEntity : list) {
+                    if (bookEntity.getType().equals(key)) {
+                        BookUtils.print(bookEntity);
                     }
                 }
             }
@@ -142,19 +136,19 @@ public class BookManager {
     }
 
     private void showBookInfoByKinds() {
-        List<Book> list = bookDAO.selectAllBookInfo();
+        List<BookEntity> list = bookDAO.selectAllBookInfo();
         Set<String> set = new HashSet<>();
-        for (Book book : list) {
-            set.add(book.getType());
+        for (BookEntity bookEntity : list) {
+            set.add(bookEntity.getType());
         }
         BookUtils.print("图书有 " + set.size() + " 类,分别如下:");
 
         for (String type : set) {
             BookUtils.print(type + "类有如下信息:");
             BookUtils.print();
-            for (Book book : list) {
-                if (book.getType().equals(type)) {
-                    BookUtils.print(book);
+            for (BookEntity bookEntity : list) {
+                if (bookEntity.getType().equals(type)) {
+                    BookUtils.print(bookEntity);
                 }
             }
         }
@@ -164,7 +158,7 @@ public class BookManager {
      * 8.人气超过50000的的未完结小说有哪些？
      */
     private void showBookInfoByPopThanFiftyThousands() {
-        List<Book> list = bookDAO.selectBookByPopFiftyThousands();
+        List<BookEntity> list = bookDAO.selectBookByPopFiftyThousands();
         BookUtils.print(list);
     }
 
@@ -172,10 +166,10 @@ public class BookManager {
      * 7.找出未完结小说里面人气最高的三本小说信息
      */
     private void showBookInfoByTopThreeFromNotOver() {
-        List<Book> list = bookDAO.selectBookByNotOver();
+        List<BookEntity> list = bookDAO.selectBookByNotOver();
         if (list != null) {
             int endIndex = 3;
-            BookUtils.print(descendingSort(list), endIndex);
+            BookUtils.print(new BookUtils().descendingSort(list), endIndex);
         } else {
             BookUtils.print("该条件下未检索到信息!");
         }
@@ -185,11 +179,11 @@ public class BookManager {
      * 6.计算所有未完结小说的平均人气
      */
     private void showAvgPopByNotOver() {
-        List<Book> list = bookDAO.selectBookByNotOver();
+        List<BookEntity> list = bookDAO.selectBookByNotOver();
         double sum = 0;
         if (list != null) {
-            for (Book book : list) {
-                sum += book.getPop();
+            for (BookEntity bookEntity : list) {
+                sum += bookEntity.getPop();
             }
             BookUtils.print("未完结小说的平均人气是" + sum / list.size());
         } else {
@@ -201,9 +195,9 @@ public class BookManager {
      * 5.查找作者是两个字的小说按人气进行排序？
      */
     private void showBookInfoFromAuthorNameByPop() {
-        List<Book> list = bookDAO.selectBookByAuthor();
+        List<BookEntity> list = bookDAO.selectBookByAuthor();
         if (list != null) {
-            BookUtils.print(descendingSort(list));
+            BookUtils.print(new BookUtils().descendingSort(list));
         } else {
             BookUtils.print("该条件下未检索到信息!");
         }
@@ -213,15 +207,15 @@ public class BookManager {
      * 4.查询人气最高的仙侠小说？
      */
     private void showMostPopByXianxia() {
-        List<Book> list = bookDAO.selectBookByXianxia();
+        List<BookEntity> list = bookDAO.selectBookByXianxia();
         if (list != null) {
-            Book maxPopBook = list.get(0);
+            BookEntity maxPopBookEntity = list.get(0);
             for (int i = 0; i < list.size() - 1; i++) {
-                if (maxPopBook.getPop() < list.get(i + 1).getPop()) {
-                    maxPopBook = list.get(i + 1);
+                if (maxPopBookEntity.getPop() < list.get(i + 1).getPop()) {
+                    maxPopBookEntity = list.get(i + 1);
                 }
             }
-            BookUtils.print(maxPopBook);
+            BookUtils.print(maxPopBookEntity);
         } else {
             BookUtils.print("暂时未收录仙侠类别小说!");
         }
@@ -232,8 +226,8 @@ public class BookManager {
      */
     private void removeBookInfoByBid() {
         String bid = BookUtils.scan.next();
-        if (isBidExist(bid)) {
-            List<Book> list = bookDAO.selectAllBookInfo();
+        if (new BookUtils().isBidExist(bid)) {
+            List<BookEntity> list = bookDAO.selectAllBookInfo();
             for (int i = 0; i < list.size(); i++) {
                 if (list.get(i).getBid().equals(bid)) {
                     if (list.remove(i) != null) {
@@ -254,7 +248,7 @@ public class BookManager {
     private void addBookInfo() {
         BookUtils.print("请输入书籍编号:");
         String bid = BookUtils.scan.next();
-        if (!isBidExist(bid)) {
+        if (!new BookUtils().isBidExist(bid)) {
             BookUtils.print("请输入书籍名称:");
             String name = BookUtils.scan.next();
             System.out.println("请输入作者姓名:");
@@ -265,9 +259,9 @@ public class BookManager {
             String type = BookUtils.scan.next();
             System.out.println("请输入是否完结(完结输入1,连载中输入2):");
             int isOver = BookUtils.scan.nextInt();
-            Book book = new Book(bid, name, author, pop, type, isOver);
+            BookEntity bookEntity = new BookEntity(bid, name, author, pop, type, isOver);
 
-            if (bookDAO.insertBook(book)) {
+            if (bookDAO.insertBook(bookEntity)) {
                 BookUtils.print("添加书籍成功!");
             } else {
                 BookUtils.print("添加书籍失败!");
@@ -281,7 +275,7 @@ public class BookManager {
      * 1.获取全部信息
      */
     private void showAllBookInfo() {
-        List<Book> list = bookDAO.selectAllBookInfo();
+        List<BookEntity> list = bookDAO.selectAllBookInfo();
         BookUtils.print(list);
     }
 
@@ -299,29 +293,6 @@ public class BookManager {
         BookUtils.print("敬请期待...");
     }
 
-    private boolean isBidExist(String bid) {
-
-        for (Book book : bookDAO.selectAllBookInfo()) {
-            if (bid.equals(book.getBid())) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private List<Book> descendingSort(List<Book> list) {
-        for (int i = 0; i < list.size() - 1; i++) {
-            for (int j = 0; j < list.size() - 1 - i; j++) {
-                if (list.get(j).getPop() < list.get(j + 1).getPop()) {
-                    Book temp = list.get(j);
-                    list.set(j, list.get(j + 1));
-                    list.set(j + 1, temp);
-                }
-            }
-        }
-        return list;
-    }
 
     private void showMainPage() {
         System.out.println("""

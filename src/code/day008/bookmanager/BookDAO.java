@@ -4,53 +4,53 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookDAO {
-    private static final List<Book> list = BookDB.getBookList();
+    private final List<BookEntity> list = new BookDB().getBookList();
 
-    public List<Book> selectAllBookInfo() {
+    public List<BookEntity> selectAllBookInfo() {
         return list;
     }
 
-    public List<Book> selectBookByXianxia() {
-        List<Book> bookList = new ArrayList<>();
-        for (Book book : list) {
-            if (book.getType().equals("仙侠")) {
-                bookList.add(book);
-            }
-        }
-        return bookList;
+    public boolean insertBook(BookEntity bookEntity) {
+        return list.add(bookEntity);
     }
 
-    public boolean insertBook(Book book) {
-        return list.add(book);
-    }
-
-    public List<Book> selectBookByAuthor() {
-        List<Book> bookList = new ArrayList<>();
-        for (Book book : list) {
-            if (book.getAuthor().length() == 2) {
-                bookList.add(book);
+    public List<BookEntity> selectBookByXianxia() {
+        List<BookEntity> bookEntityList = new ArrayList<>();
+        for (BookEntity bookEntity : list) {
+            if (bookEntity.getType().equals("仙侠")) {
+                bookEntityList.add(bookEntity);
             }
         }
-        return bookList;
+        return bookEntityList;
     }
 
-    public List<Book> selectBookByNotOver() {
-        List<Book> bookList = new ArrayList<>();
-        for (Book book : list) {
-            if (book.getIsOver() == 2) {
-                bookList.add(book);
+    public List<BookEntity> selectBookByAuthor() {
+        List<BookEntity> bookEntityList = new ArrayList<>();
+        for (BookEntity bookEntity : list) {
+            if (bookEntity.getAuthor().length() == 2) {
+                bookEntityList.add(bookEntity);
             }
         }
-        return bookList;
+        return bookEntityList;
     }
 
-    public List<Book> selectBookByPopFiftyThousands() {
-        List<Book> bookList = new ArrayList<>();
-        for (Book book : list) {
-            if (book.getPop() > 50000) {
-                bookList.add(book);
+    public List<BookEntity> selectBookByNotOver() {
+        List<BookEntity> bookEntityList = new ArrayList<>();
+        for (BookEntity bookEntity : list) {
+            if (bookEntity.getIsOver() == 2) {
+                bookEntityList.add(bookEntity);
             }
         }
-        return bookList;
+        return bookEntityList;
+    }
+
+    public List<BookEntity> selectBookByPopFiftyThousands() {
+        List<BookEntity> bookEntityList = new ArrayList<>();
+        for (BookEntity bookEntity : list) {
+            if (bookEntity.getPop() > 50000) {
+                bookEntityList.add(bookEntity);
+            }
+        }
+        return bookEntityList;
     }
 }
