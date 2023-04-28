@@ -1,10 +1,18 @@
 package code.day006;
 
 public class VehicleData {
-    static Vehicle[] vehicles;
+    private Vehicle[] vehicles;
 
     // static中的变量局部变量
-    static {
+    public VehicleData() {
+        init();
+    }
+
+    public Vehicle[] getVehicles() {
+        return vehicles;
+    }
+
+    private void init() {
         Vehicle vehicle1 = new Vehicle();
         vehicle1.setVid("20231122");
         vehicle1.setBrand("奔驰");

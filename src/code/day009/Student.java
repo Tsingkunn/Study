@@ -8,7 +8,7 @@ public class Student implements Comparable<Student> {
 
     private int age;
 
-    private String addr;
+    private static String addr;
 
     @Override
     public String toString() {
@@ -27,7 +27,7 @@ public class Student implements Comparable<Student> {
     public Student(String name, int age, String addr) {
         this.name = name;
         this.age = age;
-        this.addr = addr;
+        Student.addr = addr;
     }
 
     public Student() {
@@ -55,7 +55,7 @@ public class Student implements Comparable<Student> {
     }
 
     public void setAddr(String addr) {
-        this.addr = addr;
+        Student.addr = addr;
     }
 
     @Override

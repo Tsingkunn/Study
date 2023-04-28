@@ -25,6 +25,7 @@ public class BookDB {
         Book book4 = new Book("10014", "仙宫", "打眼", 210000, "仙侠", 2);
         Book book5 = new Book("10015", "天才相师", "打眼", 80100, "都市", 2);
         Book book6 = new Book("10016", "一念永恒", "耳根", 577000, "仙侠", 2);
+        Book book7 = new Book("10017", "一念", "草根", 577000, "仙侠", 2);
 
         bookList.add(book1);
         bookList.add(book2);
@@ -32,5 +33,6 @@ public class BookDB {
         bookList.add(book4);
         bookList.add(book5);
         bookList.add(book6);
+        bookList.add(book7);
     }
 }

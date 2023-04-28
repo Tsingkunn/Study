@@ -238,12 +238,12 @@ class Demo {
 List<Author> authors=getAuthors();
         ...
         .filter(new Predicate<Author>(){
-@Override
-public boolean test(Author author){
-        // 如果为true,可以记录留在流里面
-        // 如果为false,则被抛弃
-        return false;
-        }
+            @Override
+            public boolean test(Author author){
+            // 如果为true,可以记录留在流里面
+            // 如果为false,则被抛弃
+            return false;
+            }
         })
         ...
 
@@ -285,8 +285,7 @@ class Demo {
                 .map(Author::getName)
                 .forEach(System.out::println);
         authors.stream()
-                .map(author -> author.getAge())
-                .map(age -> age + 10)
+                .map(author -> author.getAge() + 10)
                 .forEach(System.out::println);
     }
 }
@@ -296,14 +295,6 @@ class Demo {
 
 > 这里 distinct()方法是依赖 Object 的 equals()方法来来判断是否是相同对象的,所以要注意重写 equals()方法.
 > 在 Object 的 equals()方法中,只==来判断两个数是否是相同地址来判断是否是相同元素的
-
-```java
-public boolean equals(Object obj) {
-    return (this == obj);
-}
-```
-
-在类里面注解@EqualsAndHashCode 相当于重写了 equals()与 hashCode()
 
 ```java
 @Override
@@ -319,3 +310,13 @@ public int hashCode() {
     return Objects.hash(id, name, age, intro, books);
 }
 ```
+
+#### sort: 自然排序;定制排序
+
+#### limit: 只要前面多少个元素
+
+#### skip: 跳过前面多少个元素
+
+#### flatMap: 扁平化输出流,一个实体类中有 list 成员属性,map 会变成 List<List<list 成员属性>>,这时候就要用到 flatMap
+
+#### collect: 按照特定收集元素,并返回指定类型

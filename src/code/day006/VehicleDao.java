@@ -7,14 +7,14 @@ import java.util.Objects;
 
 public class VehicleDao {
 
-    static Vehicle[] vehicles = VehicleData.vehicles;
+    private static Vehicle[] vehicles = new VehicleData().getVehicles();
 
     /**
      * 1. 查询所有汽车信息
      *
      * @return 汽车信息数组
      */
-    public static Vehicle[] queryAllVehicles() {
+    public Vehicle[] queryAllVehicles() {
         return vehicles;
     }
 
@@ -25,7 +25,7 @@ public class VehicleDao {
      * @param vehicle 需要添加到数据中的车辆信息
      * @return 是否添加成功, 添加成功返回true;反之,返回false
      */
-    public static boolean insertVehicleMsg(Vehicle vehicle) {
+    public boolean insertVehicleMsg(Vehicle vehicle) {
         return addElement(vehicle);
     }
 
@@ -36,7 +36,7 @@ public class VehicleDao {
      * @param vid 车辆编号
      * @return 是否删除成功;删除成功,返回true;否则,返回false
      */
-    public static boolean deleteVehicleByVid(String vid) {
+    public boolean deleteVehicleByVid(String vid) {
         int index = getIndexByVid(vid);
         return deleteElement(index);
     }
@@ -47,7 +47,7 @@ public class VehicleDao {
      *
      * @return 若有该类型, 返回该类型汽车信息的数组;若无该类型,返回null
      */
-    public static Vehicle[] queryVehiclesByMiddleSize(String vType) {
+    public Vehicle[] queryVehiclesByMiddleSize(String vType) {
         Vehicle[] vehicleArr = {};
 
         for (Vehicle vehicle : vehicles) {
@@ -64,7 +64,7 @@ public class VehicleDao {
      * @param vStructure 汽车的结构信息
      * @return 若有该结构类型, 返回此类型的汽车的平均值;若无,返回0
      */
-    public static double calculateAvgByStructure(String vStructure) {
+    public double calculateAvgByStructure(String vStructure) {
         double sum = 0.0;
         int suvCount = 0;
 
@@ -86,7 +86,7 @@ public class VehicleDao {
      *
      * @return 返回售价最高的车辆信息数组,;若无该类型汽车, 则返回空数组
      */
-    public static Vehicle[] findMaxCostFromBrand(String vBrand) {
+    public Vehicle[] findMaxCostFromBrand(String vBrand) {
         Vehicle[] vArr = {};
         Vehicle[] arr = {};
         double max = -1;
@@ -113,7 +113,7 @@ public class VehicleDao {
      *
      * @return 售价20万以上的车辆信息字符串数组
      */
-    public static Vehicle[] queryVehiclesByCost() {
+    public Vehicle[] queryVehiclesByCost() {
         Vehicle[] vehicleArr = {};
         for (Vehicle vehicle : vehicles) {
             if (vehicle.getCost() > 200000) {
@@ -129,7 +129,7 @@ public class VehicleDao {
      * @param vid 用户输入的车辆编码
      * @return 若编码存在, 则返回车辆信息;反之,则返回null
      */
-    public static Vehicle findVehicleByVid(String vid) {
+    public Vehicle findVehicleByVid(String vid) {
         Vehicle vehicle = null;
         for (Vehicle v : vehicles) {
             if (Objects.equals(v.getVid(), vid)) {
@@ -150,7 +150,7 @@ public class VehicleDao {
      *
      * @return 类型为Vehicle[]的 veKindsArr, 用于存放所有数据,返回 {@code List<Vehicle[]> }
      */
-    public static List<Vehicle[]> queryVehicleByKinds() {
+    public List<Vehicle[]> queryVehicleByKinds() {
 
         List<Vehicle[]> veKindsArr = new ArrayList<>();
 
@@ -202,7 +202,7 @@ public class VehicleDao {
      * @param vid 车辆编码
      * @return 若此编码存在, 返回该编码在车辆信息数组中的下标;反之,返回-1.
      */
-    public static int getIndexByVid(String vid) {
+    private int getIndexByVid(String vid) {
         int index = -1;
         for (int i = 0; i < vehicles.length; i++) {
             if (Objects.equals(vehicles[i].getVid(), vid)) {
@@ -221,7 +221,7 @@ public class VehicleDao {
      * @param vId 用户输入的车辆编号
      * @return 如果vid存在, 返回true;反之,返回false
      */
-    public static boolean isIdExist(String vId) {
+    public boolean isIdExist(String vId) {
         for (Vehicle vehicle : vehicles) {
             if (vehicle.getVid().equals(vId)) {
                 return true;
@@ -236,7 +236,7 @@ public class VehicleDao {
      * @param vehicle 单条车辆信息字符串
      * @return 若添加成功, 返回true;反之,返回false
      */
-    public static boolean addElement(Vehicle vehicle) {
+    private boolean addElement(Vehicle vehicle) {
         int olen = vehicles.length;
         // 扩容
         vehicles = Arrays.copyOf(vehicles, vehicles.length + 1);
@@ -255,7 +255,7 @@ public class VehicleDao {
      * @param vehicle  单条车辆信息
      * @return 在末尾追加新的车辆信息的数组
      */
-    public static Vehicle[] addElement(Vehicle[] vehicles, Vehicle vehicle) {
+    private Vehicle[] addElement(Vehicle[] vehicles, Vehicle vehicle) {
         // 扩容
         vehicles = Arrays.copyOf(vehicles, vehicles.length + 1);
         // 添加新元素
@@ -269,7 +269,7 @@ public class VehicleDao {
      * @param index 数组下标
      * @return 删除成功, 返回true;否则,返回false
      */
-    public static boolean deleteElement(int index) {
+    private boolean deleteElement(int index) {
         int oldLength = vehicles.length;
         System.arraycopy(vehicles, index + 1, vehicles, index, vehicles.length - index - 1);
         vehicles = Arrays.copyOf(vehicles, vehicles.length - 1);

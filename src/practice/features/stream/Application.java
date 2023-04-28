@@ -1,11 +1,26 @@
 package practice.features.stream;
 
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Application {
     public static void main(String[] args) {
-        test07();
+        test08();
+    }
+
+    private static void test08() {
+        List<Author> authors = getAuthors();
+        authors.stream()
+                .flatMap(author -> author.getBooks().stream())
+                .distinct().sorted(new Comparator<Book>() {
+                    @Override
+                    public int compare(Book o1, Book o2) {
+                        return 0;
+                    }
+                })
+                .forEach(System.out::println);
     }
 
     private static void test07() {
@@ -27,8 +42,8 @@ public class Application {
         List<Author> authors = getAuthors();
 
         authors.stream()
-                .map(author -> author.getAge())
-                .map(age -> age + 10)
+                .map(author -> author.getAge() + 10)
+//                .map(age -> age + 10)
                 .forEach(System.out::println);
 
         // authors.stream()
@@ -46,7 +61,7 @@ public class Application {
     }
 
     private static void test02() {
-        Integer[] arr = { 1, 2, 3, 4, 5, 5 };
+        Integer[] arr = {1, 2, 3, 4, 5, 5};
         Arrays.stream(arr)
                 .distinct()
                 .filter(integer -> integer > 3)

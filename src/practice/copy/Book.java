@@ -1,7 +1,5 @@
 package practice.copy;
 
-import com.sun.source.tree.NewArrayTree;
-
 import java.io.*;
 
 public class Book implements Cloneable, Serializable {
@@ -9,7 +7,6 @@ public class Book implements Cloneable, Serializable {
     private String name;
 
     private int page;
-
 
     public Book() {
     }
@@ -36,13 +33,8 @@ public class Book implements Cloneable, Serializable {
     }
 
     @Override
-    public Book clone() {
-        try {
-            return (Book) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
+    public Book clone() throws CloneNotSupportedException {
+        return (Book) super.clone();
     }
-
 
 }

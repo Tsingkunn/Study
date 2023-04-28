@@ -1,5 +1,7 @@
 package practice.features.stream;
 
+import java.util.Objects;
+
 public class Book {
 
     // id
@@ -27,6 +29,17 @@ public class Book {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", category='" + category + '\'' +
+                ", score=" + score +
+                ", intro='" + intro + '\'' +
+                '}';
     }
 
     public String getCategory() {
@@ -63,5 +76,18 @@ public class Book {
         this.category = category;
         this.score = score;
         this.intro = intro;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return id == book.id && Objects.equals(name, book.name) && Objects.equals(category, book.category) && Objects.equals(score, book.score) && Objects.equals(intro, book.intro);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, category, score, intro);
     }
 }

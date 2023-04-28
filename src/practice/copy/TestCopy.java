@@ -28,11 +28,18 @@ public class TestCopy {
         System.out.println("------");
         System.out.println("------");
 
-        // 浅拷贝: 浅拷贝中,浅拷贝的克隆对象中,引用类型的字段指向的时同一个
+
         Writer writer1 = new Writer("倩倩", book1);
-        // 浅克隆
-//        Writer writer2 = writer1.clone();
-        Writer writer2 = (Writer) writer1.deepClone();
+
+
+        // 浅拷贝: 浅拷贝中,浅拷贝的克隆对象中,引用类型的字段指向的时同一个
+        // Writer writer2 = writer1.clone();
+
+        // 深拷贝:
+        // 要实现深拷贝可以通过序列化的方式,
+        // 也可以通过克隆的方式,不过在克隆的对象中的引用类型也要进行拷贝(当引用类型很多时,会很笨重).
+        // 不过序列化的方式,要比hotSpot虚拟机实现clone()方法要差很多.
+        Writer writer2 = (Writer) new Clone().deep(writer1);
 
         System.out.println("before writer1 : " + writer1);
         System.out.println("before writer1 book addr:" + writer1.getBook());
@@ -46,8 +53,6 @@ public class TestCopy {
 
         writer2.getBook().setName("小小的梦想");
         writer2.getBook().setPage(55);
-//        writer2.setBook(book3);
-
 
         System.out.println("after writer1 book addr:" + writer1.getBook());
         System.out.println("after writer1 book name:" + writer1.getBook().getName());
@@ -55,10 +60,6 @@ public class TestCopy {
         System.out.println("after writer2 book addr:" + writer2.getBook());
         System.out.println("after writer2 book name:" + writer2.getBook().getName());
         System.out.println("after writer1 book name:" + writer2.getBook().getPage());
-
-        // 要实现深拷贝可以通过序列化的方式,
-        // 也可以通过克隆的方式,不过在克隆的对象中的引用类型也要进行拷贝(当引用类型很多时,会很笨重).
-        // 不过序列化的方式,要比hotSpot虚拟机实现clone()方法要差很多.
 
 
     }

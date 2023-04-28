@@ -1,6 +1,7 @@
 package code.day008.bookmanager.tools;
 
 import code.day008.bookmanager.dao.BookDAO;
+import code.day008.bookmanager.db.BookDB;
 import code.day008.bookmanager.entity.Book;
 
 import java.util.Comparator;
@@ -8,8 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BookUtils implements Comparator<Book> {
-    public final static Scanner scan = new Scanner(System.in);
-    private final BookDAO bookDAO = new BookDAO();
+    public static final Scanner scan = new Scanner(System.in);
     public static boolean isLoop = true;
 
     public static void print() {
@@ -53,17 +53,7 @@ public class BookUtils implements Comparator<Book> {
     public int compare(Book book1, Book book2) {
         return book2.getPop() - book1.getPop();
     }
-
-    public boolean isBidExist(String bid) {
-
-        for (Book book : bookDAO.selectAllBookInfo()) {
-            if (bid.equals(book.getBid())) {
-                return true;
-            }
-        }
-        return false;
-    }
-
+    
     public List<Book> descendingSort(List<Book> list) {
         for (int i = 0; i < list.size() - 1; i++) {
             for (int j = 0; j < list.size() - 1 - i; j++) {
