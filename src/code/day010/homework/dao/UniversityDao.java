@@ -66,12 +66,6 @@ public class UniversityDao {
     }
 
     public Map<String, List<University>> groupUniversityByType() {
-//        uList.stream().flatMap(new Function<University, Stream<?>>() {
-//            @Override
-//            public Stream<?> apply(University university) {
-//                return null;
-//            }
-//        })
         return uList.stream()
                 .collect(Collectors.groupingBy(University::getType));
     }

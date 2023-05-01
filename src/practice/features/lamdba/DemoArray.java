@@ -2,8 +2,19 @@ package practice.features.lamdba;
 
 import code.day008.bookmanager.entity.Book;
 
+import java.util.function.Supplier;
+
 public class DemoArray {
     public static void main(String[] args) {
+        new Supplier<String>() {
+
+            @Override
+            public String get() {
+                return null;
+            }
+        };
+
+
         String[] arrStr = {"青君", "哥哥", "太帅啦", "!"};
         Integer[] arrNum = {1, 2, 3, 4};
 

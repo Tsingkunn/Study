@@ -5,11 +5,12 @@ public class Test {
         System.out.println(vehicle.wheel);
     }
 
-    // return new Car()
+
     public static void main(String[] args) {
-        Vehicle vehicle = VehicleFactory.getVehicle("by");
-        //= new By()
-        
+        // return new Car()
+        //
+        Vehicle vehicle = VehicleFactory.getVehicle("car");
+
         Test test = new Test();
 
         test.run(vehicle);

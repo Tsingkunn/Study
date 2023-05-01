@@ -10,7 +10,12 @@ public class A {
     }
 
     public void fun1() {
+
         System.out.println("这是一个函数fun1");
+    }
+
+    final void fun2() {
+
     }
 
 }

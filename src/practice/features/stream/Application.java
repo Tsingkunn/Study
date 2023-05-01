@@ -2,6 +2,7 @@ package practice.features.stream;
 
 import java.util.*;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -13,14 +14,8 @@ public class Application {
     private static void test08() {
         List<Author> authors = getAuthors();
         authors.stream()
-                .flatMap(author -> author.getBooks().stream())
-                .distinct().sorted(new Comparator<Book>() {
-                    @Override
-                    public int compare(Book o1, Book o2) {
-                        return 0;
-                    }
-                })
-                .forEach(System.out::println);
+                .collect(Collectors.toMap(Author::getName, Author::getBooks, (oldValue, newValue) -> oldValue))
+                .forEach((k, v) -> System.out.println(k + ":" + v));
     }
 
     private static void test07() {
@@ -99,7 +94,7 @@ public class Application {
         Author author1 = new Author(1L, "蒙多", 33, "一个从菜刀中明悟的祖安人", null);
         Author author2 = new Author(2L, "亚拉索", 15, "狂风也追不上他思考的速度", null);
         Author author3 = new Author(3L, "易", 14, "是这个世界在限制他的思维", null);
-        Author author4 = new Author(3L, "易", 14, "是这个世界在限制他的思维", null);
+        Author author4 = new Author(3L, "易", 155, "是这个世界在限制他的思维", null);
 
         List<Book> books1 = new ArrayList<>();
         List<Book> books2 = new ArrayList<>();

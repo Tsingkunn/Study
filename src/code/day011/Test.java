@@ -17,6 +17,7 @@ public class Test {
             }
         }.fun1();
 
+
         // lambda:只关注参数,与返回值
         B b = () -> System.out.println("B接口.匿名");
         b.funB();
