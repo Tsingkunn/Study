@@ -1,28 +1,25 @@
 package practice.array;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ArrayTest {
 
     public static void main(String[] args) {
-        Array array = new Array();
-        array.list = new ArrayList<>();
-        array.list.add(-1);
-        array.list.add(-1);
-        array.list.add(-3);
-        array.list.add(1);
-        array.list.add(5);
-        array.list.add(4);
-        array.list.add(-7);
-        array.list.add(8);
-        array.list.add(-5);
-        array.list.add(9);
-        // >> -1,-1,-3,1,5,4,-7,8,-5,9
-        System.out.println(array.filter().sort().toString());
-        // >>Array{list=[4, 5, 8, 9]}
+        // 10行5列
+        int[] nums = {0, 1, 0, 3, 12};
+        int index = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                nums[index++] = nums[i];
+            }
+        }
 
-        String s1;
+        for (int i = index; i < nums.length; i++) {
+            nums[index++] = 0;
+        }
 
+        System.out.println(Arrays.toString(nums));
     }
 
 }

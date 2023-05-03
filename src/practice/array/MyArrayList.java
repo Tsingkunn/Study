@@ -180,8 +180,8 @@ public class MyArrayList<E> implements Iterable<E>, Cloneable, Serializable {
 
     // 某一个元素地址的值
     @SuppressWarnings("unchecked")
-    private static <E> E valueAt(Object[] objects, int index) {
-        return (E) objects[index];
+    private <R extends E> R valueAt(Object[] objects, int index) {
+        return (R) objects[index];
     }
 
     // 数组的扩容

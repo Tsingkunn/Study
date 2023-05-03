@@ -26,22 +26,22 @@ public class Job6 {
 
         // 字符的比较是基本数据类型比较，是直接用等于号的
         for (String person : people) {
-            if (person.charAt(0) == '张') {
-                System.out.println("人名：" + person);
-            }
+//            if (person.charAt(0) == '张') {
+//                System.out.println("人名：" + person);
+//            }
         }
 
         // subString是实例化一个新的字符串，其堆栈地址是一个新的地址。
         // subString有两种重载方法 1.（begin,end） 2.(begin)
         for (String person : people) {
-            if (person.substring(0, 1).equals("张")) {
+            if (person.charAt(0) == '张') {
                 System.out.println("人名：" + person);
             }
         }
         // 如果没有新的实例化一个字符串，那么其引用都指向一个相同的堆栈地址，所以可以用等于来比较。
         // 也就是说 == 是比较两个内容的值的堆栈地址。而equals比较的两个内容的值
         String n1 = "张";
-        String n2 = new String("张");
+        String n2 = "张";
         System.out.println(n2 == n1);
         System.out.println(n1 == "张");
 

@@ -4,9 +4,7 @@ import code.day010.homework.database.UniversityData;
 import code.day010.homework.entity.University;
 
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class UniversityDao {
 

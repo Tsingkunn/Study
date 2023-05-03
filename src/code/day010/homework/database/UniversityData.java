@@ -35,6 +35,7 @@ public class UniversityData {
         uList.add(u5);
         uList.add(u6);
         uList.add(u7);
+
     }
 
 }

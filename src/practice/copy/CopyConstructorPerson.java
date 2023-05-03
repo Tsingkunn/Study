@@ -7,7 +7,7 @@ public class CopyConstructorPerson {
     private String name;
     private int age;
 
-    public CopyConstructorPerson(@org.jetbrains.annotations.NotNull CopyConstructorPerson copyConstructorPerson) {
+    public CopyConstructorPerson( CopyConstructorPerson copyConstructorPerson) {
         this.name = copyConstructorPerson.name;
         this.age = copyConstructorPerson.age;
     }
