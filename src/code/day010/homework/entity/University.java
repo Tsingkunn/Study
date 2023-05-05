@@ -112,7 +112,7 @@ public class University {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         University that = (University) o;
-        return type == that.type && subject == that.subject && rank == that.rank && Objects.equals(uname, that.uname) && Objects.equals(city, that.city) && Objects.equals(batch, that.batch) && Objects.equals(topScore, that.topScore);
+        return Objects.equals(type, that.type) && Objects.equals(subject, that.subject) && rank == that.rank && Objects.equals(uname, that.uname) && Objects.equals(city, that.city) && Objects.equals(batch, that.batch) && Objects.equals(topScore, that.topScore);
     }
 
     @Override

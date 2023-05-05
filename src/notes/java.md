@@ -694,3 +694,11 @@
       str2.intern();
        str1 == str2; // true
    ```
+
+## 异常
+
+所有异常的父类: Throwable
+
+Throwable 的直接子类 Error,Exception
+
+Exception: RunTimeEXception

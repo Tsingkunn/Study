@@ -16,16 +16,19 @@ public class UniversityDao {
 
     public List<University> queryUniversityInfoBySubject() {
         return uList.stream()
+                .filter(university -> university.getCity().equals("成都"))
+                .filter(university -> university.getType().equals(""))
                 .filter(university -> university.getSubject().equals("理"))
                 .collect(Collectors.toList());
     }
 
     public List<University> queryUniversityInfoFromBatchBySubject() {
-        return uList.stream()
+        float max = uList.stream()
                 .filter(university -> university.getSubject().equals("理") && university.getBatch().equals("本科一批") && university.getType().equals("公立"))
-                .max(Comparator.comparingDouble(University::getTopScore))
-                .stream()
-                .collect(Collectors.toList());
+                .map(University::getTopScore)
+                .max(Comparator.comparingDouble(Float::doubleValue))
+                .orElse(0f);
+        return uList.stream().filter(university -> university.getTopScore() == max).toList();
     }
 
     public double queryUniversityAvgScoreByType() {
@@ -66,5 +69,19 @@ public class UniversityDao {
     public Map<String, List<University>> groupUniversityByType() {
         return uList.stream()
                 .collect(Collectors.groupingBy(University::getType));
+    }
+
+    public boolean isNameExist(String name) throws RuntimeException {
+        for (University university : uList) {
+            if (university.getUname().equals(name))
+                throw new RuntimeException("学校名字重复");
+        }
+        return false;
+    }
+
+    public void insert(University university) {
+        if (!isNameExist(university.getUname())) {
+            uList.add(university);
+        }
     }
 }
