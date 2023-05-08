@@ -274,7 +274,10 @@
   - 只会加载一次,并且内存中只有一块内存空间保存
   - 可以修饰类/方法
 
-  > 1. static 修饰的方法叫静态方法(类方法),该方法属于这个类,通过 **_类名.静态方法名(实参);_** 用 **_对象.方法名(实参)_** 也能调用
+  > 1. static 修饰的方法叫静态方法(类方法),该方法属于这个类,通过 **_类名.静态方法名(实参);_** 用 **_对象.方法名(实参)_**
+
+       也能调用
+
   > 2. 没有被 static 修饰的叫做成员方法,成员方法的调用方式为: **_对象.方法名(实参)_**
 
   ```java
@@ -533,7 +536,8 @@
     1. 不能被实例化
     2. 都是抽象方法,接口中方法默认都是抽象方法,默认添加 public abstract 修饰符, 所有方法都是 public
     3. 不能定义构造方法
-    4. 接口中变量都是常量,定义成员变量必须有初始值.默认添加 public static final,如 public static final int AGE = 10 或 int AGE = 10;
+    4. 接口中变量都是常量,定义成员变量必须有初始值.默认添加 public static final,如 public static final int AGE = 10
+       或 int AGE = 10;
     5. 接口与接口之间可以实现多继承(extends)
     6. 抽象类中不必实现接口中的抽象方法
 
@@ -564,15 +568,16 @@
       1. 抽象类能被 public,default,protected 修饰,可以限制子类的继承
       2. 接口类必须被 public 修饰.接口要可以被任何类实现.
     - 对于成员变量:
-      1.  抽象类不限制对成员变量的使用,使用 private 修饰的成员变量无法被子类继承
-      2.  接口中的成员变量都是常量,默认被 public static final 修饰
+      1. 抽象类不限制对成员变量的使用,使用 private 修饰的成员变量无法被子类继承
+      2. 接口中的成员变量都是常量,默认被 public static final 修饰
     - 对于方法:
-      1.  抽象类中的方法不限制使用访问修饰符.private 修饰的方法无法被子类继承
-      2.  抽象方法中的方法默认被 public abstract 修饰
+      1. 抽象类中的方法不限制使用访问修饰符.private 修饰的方法无法被子类继承
+      2. 抽象方法中的方法默认被 public abstract 修饰
 
   - 方法:
     - 构造器: 1.抽象类有构造器 2.接口没有构造器
-    - 普通方法: 1.抽象类中的方法可以是普通方法,也可以是抽象方法. 2.接口中必须全部是抽象方法. (jdk8 以后可以有默认方法 default )
+    - 普通方法: 1.抽象类中的方法可以是普通方法,也可以是抽象方法. 2.接口中必须全部是抽象方法. (jdk8 以后可以有默认方法
+      default )
   - 变量: 1.抽象类中的变量与普通类中的定义规则一致. 2.接口中的变量都是常量.
 
   - 继承关系: 1.一个类只可以继承一个抽象类 2.一个类可以实现多个接口,一个接口可以对多个接口实现继承
@@ -587,26 +592,26 @@
 
     - List(接口):集合元素有序可重复的集合
 
-      1. ArrayList 使用:
+            1. ArrayList 使用:
 
-      > 1. 构造方法: 无参构造方法默认大小是 10
-      > 2. add(E) 末尾追加元素
-      >    add(int index, E element) 向指定下标添加元素
-      >    addAll(Collection<? extends E> c) 向集合末尾添加一个新的集合
-      >    clear() 删除所有元素
-      >    contains(Object o) 集合中包含某元素
-      >    get(index) 获取集合中指定位置元素
-      >    indexOf(Object o) 返回此列表中指定元素的第一次出现的索引，如果此列表不包含元素，则返回-1。
-      >    isEmpty() 如果此列表不包含元素，则返回 true
-      >    set(index, E) 用指定的元素（可选操作）替换此列表中指定位置的元素。
-      >    remove(index) 删除该列表中指定位置的元素
-      >    remove(obj) 从列表中删除指定元素的第一个出现（如果存在）
-      >    removeAll(Collection<?> c) 从此列表中删除包含在指定集合中的所有元素
-      >    size() 返回当前集合元素个数
-      >    sort()
-      >    sort(Comparator<? super E> c) 指定规则排序
-      >    subList(int fromIndex, int toIndex) 返回此列表中指定的 fromIndex （含）和 toIndex 之间的 List。
-      > 3. 遍历集合的方式:for;for-each;iterator
+          > 1. 构造方法: 无参构造方法默认大小是 10
+          > 2. add(E) 末尾追加元素
+               >    add(int index, E element) 向指定下标添加元素
+               >    addAll(Collection<? extends E> c) 向集合末尾添加一个新的集合
+
+      > clear() 删除所有元素
+      > contains(Object o) 集合中包含某元素
+      > get(index) 获取集合中指定位置元素
+      > indexOf(Object o) 返回此列表中指定元素的第一次出现的索引，如果此列表不包含元素，则返回-1。
+      > isEmpty() 如果此列表不包含元素，则返回 true
+      > set(index, E) 用指定的元素（可选操作）替换此列表中指定位置的元素。
+      > remove(index) 删除该列表中指定位置的元素
+      > remove(obj) 从列表中删除指定元素的第一个出现（如果存在）
+      > removeAll(Collection<?> c) 从此列表中删除包含在指定集合中的所有元素
+      > size() 返回当前集合元素个数
+      > sort()
+      > sort(Comparator<? super E> c) 指定规则排序
+      > subList(int fromIndex, int toIndex) 返回此列表中指定的 fromIndex （含）和 toIndex 之间的 List。 3. 遍历集合的方式:for;for-each;iterator
       >
       > ```java
       > Iterator it = list.iterator();
@@ -622,8 +627,8 @@
       >
       > 对数组的增加,删除操作,不要再 foreach 中进行.foreach 中的删除添,加操作不会修改迭代器信息.会抛出异常.
 
-      2. LinkedList 链表实现.添加,删除元素效率高,查找慢
-         ArrayList 数组实现.添加,是删除元素效率低,查找快
+            2. LinkedList 链表实现.添加,删除元素效率高,查找慢
+               ArrayList 数组实现.添加,是删除元素效率低,查找快
 
     - Set(接口):集合元素无序不重复的集合
       - 元素在集合中的顺序不遵循循环放入的顺序
@@ -702,3 +707,69 @@
 Throwable 的直接子类 Error,Exception
 
 Exception: RunTimeEXception
+
+## IO
+
+1. IO 流的流向输入流/输出流
+2. IO 流的类型字节流/字符流
+
+#### 一. 字符流
+
+Reader 字符输入流:把文件中的数据,读入到 java 的项目中
+Writer 字符输出流:把 java 项目中的数据,写到文件中
+
+#### 二. 字节流
+
+utf-8 读取中文一次要读取 3 个字节才能读完
+
+#### 三. IO 流异常
+
+#### 四. close()方法
+
+先刷新,再关闭
+
+读完一个文件,先刷新缓冲区 flush()
+
+#### 流
+
+**低级流**
+
+Reader/Writer:
+FileWriter/FileReader;BufferedWriter/BufferedReader
+InputStream/OutputStream:
+FileInputStream/FileOutputStream;BufferedInputStream/BufferedOutputStream
+
+流:->指向一个文件,低级流;->指向一个流,高级流
+
+对象流:
+ObjectInputStream/ObjectOutputStream
+**转换流**:
+
+**转换流**:
+byte:8 位
+char:16 位
+
+字节流->字符流
+OutputStreamWriter(OutputStream)
+InputStreamReader(InputStream)
+
+BufferedWriter(OutputStreamWriter(OutputStream))
+
+其他流:
+
+1. 行号流:只有输入流,读取时,获取对应行号
+   LineNumberReader()
+   -> getLineNumber()
+   -> setLineNumber()
+2. 合并流:把多个文件进行合并,一次性读取多个文件
+
+   SequenceInputStream
+
+   > 两个构造方法()
+
+3. 内存流:
+   ByteArrayInputStream
+   ByteArrayOutputStream: write/toString
+
+4. 打印流
+   PrintStream/PrintWriter
