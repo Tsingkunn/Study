@@ -763,9 +763,11 @@ BufferedWriter(OutputStreamWriter(OutputStream))
    -> setLineNumber()
 2. 合并流:把多个文件进行合并,一次性读取多个文件
 
-   SequenceInputStream
+   SequenceInputStream(Enumeration<? extends InputStream> e)
 
-   > 两个构造方法()
+SequenceInputStream​(InputStream s1, InputStream s2)
+
+> 两个构造方法()
 
 3. 内存流:
    ByteArrayInputStream
@@ -773,3 +775,303 @@ BufferedWriter(OutputStreamWriter(OutputStream))
 
 4. 打印流
    PrintStream/PrintWriter
+
+## id
+
+1. UUID 单系统
+2. 雪花 id long 类型,适合分布式,微服务
+
+## 日期类
+
+util.Date
+
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+sdf.format(new Date);
+
+## 单元测试 JUnit
+
+1. 导入 JUnit jar 包
+2. 创建单元测试包
+3. 创建单元测试类
+4. 定义测试方法:公共,非静态,无返回值,无参; 填写测试内容
+5. 在测试方法上添加@Test 注解
+
+@Test/@Before/@After
+
+## 单例模式
+
+某个类有且仅有一个对象
+
+1. 懒汉式
+   1.1 定义一个私有(只能自己内部访问),静态(唯一,只会加载一次,内存分一块),类型为自己本身的变量(成员变量);
+   1.2 定义一个私有的构造方法
+   1.3 定义一个公共的,静态的,返回值自己本身类型的方法
+   (如果不考虑线程安全,可以考虑使用)
+
+2. 饿汉式
+   1.1 定义一个私有(只能自己内部访问),最终的(一旦初始化不能更改),静态(唯一,只会加载一次,内存分一块),类型为自己本身的变量(成员变量);并且初始化赋值
+   1.2 定义一个私有的构造方法
+   1.3 定义一个公共的,静态的,返回值自己本身类型的方法
+
+**区别:**
+
+1. 懒汉式是线程不安全的;饿汉是线程安全的
+
+## 线程
+
+线程锁
+
+synchronized (this) {
+
+}
+
+lock
+
+1. 进程: 一个正在运行中的程序
+   如果一个程序正在运行中,可以抽象成进程
+
+2. 线程: 进程中的任何一个执行单元./任务./功能.需要被执行.都需要经过线程来执行
+
+3. 多线程:表示一个程序中,有两条或者两条以上的线程,叫做多线程.
+
+4. 并发: 指同一个时间段,同个可以同时执行多个任务.但是同意一个时间点,指定执行其中的某一个
+
+5. 并行: 同一个时间点,有多个线程正在执行.
+
+#### 线程与进程之间的关系
+
+线程是存在进程中的,一个进程可能是单条线程,也有可能有多条线程
+线程的运行是由 cpu 决定的.不是由进程决定的.cpu 分配给线程资源,线程才可以运行
+
+6.  线程的创建(三种方式)
+
+    - 继承 Thread 类
+      1. 自定义类继承 Thread 类
+      2. 重现 run 方法(润方法是由程序自己调用,而非程序员调用)
+      3. 创建线程对象
+      4. 调用 start 方法执行 //start(),启动线程,等待 cpu 分配资源
+    - 实现 Runnable 接口
+      1. 自定义类,实现 Runnable 接口
+      2. 重写 run 方法
+      3. 创建线程对象.
+      4. Tread(new Runnable() {})
+      5. 调用 start 方法
+
+7.  线程的物种生命状态(生命周期):
+
+    1. 新建态: 当创建一个线程对象后,线程就是新建状态 Thread t = new Thread(()->{});
+    2. 就绪态: 通过对象调用 start()方法后,线程进入就绪状态. t.start();
+    3. 运行态: 当 cpu 分配资源给线程对象后,线程就马上去执行 run 方法中的语句.这是线程就进入到了运行状态.
+    4. 阻塞态: 当线程运行一部分后.执行到 sleep/join/...都会使当前线程进入阻塞状态; sleep 之后不会立即执行,会重新进入到就绪态
+    5. 死亡态: 当线程执行完 run 方法后,就进入到死亡态./或调用线程中的某些方法,也会导致线程直接进入死亡态.比如 interrupt()中断方法
+
+8.  线程的常用方法:
+
+    1. Thread.currentThread() 获取当前当前线程对象
+    2. getName() 获取当前线程名称/ setName() 设置线程名称
+    3. sleep(毫秒) 当前线程休眠
+    4. join() 加入线程
+    5. yield() 礼让线程,释放 cpu 资源,也仅仅是释放资源
+    6. setDaemon() 守护非守护线程.有可能执行完内容结束,有可能没执行完结束
+    7. setPriority()设置线程的优先级 ,取值范围:1~10;线程优先级依次变高
+
+9.  线程锁:
+
+    1. 同步代码块
+       synchronized (锁对象) {
+       // 要锁住的内容,代码块
+       }
+
+    锁对象得是同一个对象
+    代码块执行完才释放资源.
+
+    2. 非静态同步方法 public synchronized 返回值类型 方法名 (参数列表) {
+       }
+
+    锁对象是 this
+
+    3. 静态同步方法 public static synchronized 返回值类型 方法名 (参数列表) {
+
+    }
+
+    锁对象是 当前类 (类名.class)
+
+10. Object 与 synchronized 锁 / 用 wait()与 notify()实现线程间通信
+    Object :
+    wait();使当前线程进入等待状态
+    notify();随机唤醒等待下的线程
+    notifyAll();唤醒所有等待下的线程
+
+        等待/唤醒 需要等待/唤醒是一个相同的对象.这样才能通过一个对象锁来实现唤醒,等待的才做.
+        且需要第三方变量/或者其他方法来实现对等待/唤醒的轮换.
+        对需要同步的代码块加锁
+
+```java
+public class CommunicationTest {
+    static Object obj = new Object();
+
+    static int num = 1;
+
+    static class Fun1 extends Thread {
+        @Override
+        public void run() {
+            synchronized (obj) {
+                while (true) {
+                    try {
+                        if (num != 1)
+                            obj.wait();
+                        System.out.println("");
+                        num = 2;
+                        obj.notify();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
+
+    static class Fun2 extends Thread {
+        @Override
+        public void run() {
+            synchronized (obj) {
+                while (true) {
+                    try {
+                        if (num != 2)
+                            obj.wait();
+                        System.out.println("");
+                        num = 1;
+                        obj.notify();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
+}
+
+```
+
+11. Lock 锁
+    lock 锁只能锁代码锁
+    lock.lock(); // 锁只能锁代码块,上锁
+    lock.unlock(); // 解锁
+    lock.newCondition(); 一个对象一个 Condition
+    用 Condition 对象来实现线程间的通信
+
+```java
+public class CommunicationTest {
+
+    static int num = 1;
+
+    private static Lock lock = new ReentrantLock();
+
+    private static Condition c1 = lock.newCondition();
+    private static Condition c2 = lock.newCondition();
+
+    static class Fun1 extends Thread {
+        @Override
+        public void run() {
+            while (true) {
+                lock.lock();
+                try {
+                    if (num != 1)
+                        c1.await();
+                    System.out.println("花儿开了");
+                    num = 2;
+                    c2.signal();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                lock.unlock();
+            }
+        }
+    }
+
+    static class Fun2 extends Thread {
+        @Override
+        public void run() {
+            while (true) {
+                lock.lock();
+                try {
+                    if (num != 2)
+                        c2.await();
+                    System.out.println("花儿谢了");
+                    num = 1;
+                    c1.signal();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                lock.unlock();
+                ;
+            }
+        }
+    }
+}
+
+```
+
+12. lock 与 synchronized 的区别
+
+- lock 锁是一个接口;synchronized 是一个 java 内置关键字
+- **lock 锁手动去获取的锁,与释放锁.获取锁和释放锁是可控的.**
+  **synchronized 是由 jvm 自动的获取和释放的锁,整个过程是不可见的.**
+- lock 锁是一种公平锁,synchronized 是一种非公平锁.
+
+13. 线程池
+    需要用到大量线程时.线程的频繁创建和销毁很占用资源,非常影响系统的性能.
+    jdk 1.5 之后,出现了线程池.
+    线程池中的线程可以指定线程的条数,并且线程池中的线程可以执行,在执行完任务之后,不会马上销毁,而是会回到线程池,等待下一次被调用.直到我们关闭线程池后,线程池中的线程才会被销毁.
+    两种方式创建:
+
+    Executors:都是静态方法.
+
+    1. newFixedThreadPool(int nThread)创建线程池,并指定线程的条数,返回值为 ExecutorService
+    2. newSingleThreadPool()创建一个无界队列的单个工作线程的线程池,返回值为 ExecutorService.
+
+    ExecutorService:
+
+    1. submit(Runnable r)/
+    2. submit(Runnable r, T result) /
+    3. submit(Callable c)来创建任务
+    4. shutDown() /
+
+    TreadPoolExecutor: alibaba 手册建议. 七个参数
+
+    1.
+
+## 工厂模式
+
+产生对象
+
+1. 简单工厂设计模式
+
+   缺点:当程序要新增类,或修改某个类时,要对程序中的工厂类源代码进行修改.这样就违反了'开闭原则'
+
+2. 工厂方法模式
+
+   1. 把工厂类抽象一个接口
+   2. 创建不同的工厂实现类来实现工厂接口
+
+   符合开闭原则
+
+3. 抽象工厂模式
+
+## 反射
+
+在程序运行的状态,可以通过反射动态的获取类中的所有内容(属性,方法,构造方法)
+
+通过反射创建指定类的对象
+
+Class
+Filed
+Constructor
+Method
+
+## String/StringBuffer/StringBuilder
+
+String 是一个不可变字符串; 应用场景:字符串中的字符序列不需要经常改变,则选用
+StringBuffer / StringBuilder 是一个可变字符串; 应用场景:需要经常改变字符序列的场景
+StringBuffer 是一个线程安全的
+StringBuilder 是一个非线程安全的
